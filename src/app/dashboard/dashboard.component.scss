@@ -1,0 +1,148 @@
+h1{
+  font: normal normal normal  Roboto;
+  font-size: 1.6rem;
+  font-weight: bolder
+}
+h2{
+  font: normal normal bold  Montserrat;
+  font-size: 25px;
+}
+h3{
+  font: normal normal bold 17px/20px Montserrat;
+}
+h4{
+  font: normal normal bold 1em Montserrat;
+}
+
+#clock {
+  font-family: 'Orbitron', sans-serif;
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+#clock2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #000;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: block;
+}
+
+.section{
+  margin-top: 20px;
+  overflow-y: auto;
+  height: 600px;
+}
+.section::-webkit-scrollbar {
+  width: 16px;
+}
+
+.section::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.section::-webkit-scrollbar-thumb {
+  background-color: #d4aa70;
+  border-radius: 100px;
+}
+
+/* .mat-tab-label .mat-tab-label-content {
+  font-size: 5px !important;
+  background-color: red;
+} */
+
+.p-3{
+  padding: 0 !important;
+}
+
+.card-body {
+  padding: 0 0 !important;
+}
+
+.section[_ngcontent-mvs-c152]{
+  height: unset !important;
+}
+
+/* .card{
+  height: 11rem;
+} */
+
+.dashboard{
+    padding: 20px 15px;
+    height: calc(100vh - 51px);
+    width: 100%;
+    overflow: auto;
+        overflow-x: hidden;
+    p {
+    margin-bottom: 0.4rem;
+}
+    .dashboard-title{
+        color: #003F5C;
+        font-size: 1.1rem;
+        letter-spacing: 0px;
+        text-transform: capitalize;
+    }
+
+}
+.btn-top{
+    margin: 0 !important;
+    margin-right: 10px !important;
+    border-radius: 6px;
+}
+#dashboardLayout{
+ border-radius: 10px;
+}
+
+#default_dashboard {
+    padding: 10px;
+}
+
+#default_dashboard.e-dashboardlayout.e-control .e-panel:hover .e-close-icon {
+    display: block;
+}
+
+#default_dashboard .e-panel .e-panel-container .text-align {
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+}
+
+#default_dashboard.e-dashboardlayout.e-control .e-panel .e-template-icon {
+    padding: 10px;
+    float: right;
+    display: none;
+}
+
+#default_dashboard{
+    display: block;
+  }
+
+#default_dashboard.e-dashboardlayout.e-control .e-panel .e-close-icon::before {
+    content: '\e100';
+    font-size: 12px;
+    font-family: 'ej-icon';
+}
+
+@font-face {
+    font-family: 'ej-icon';
+    src:
+    url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAAKAIAAAwAgT1MvMjdtQ/IAAAEoAAAAVmNtYXDhEOFVAAABiAAAADZnbHlmq8jV4gAAAcgAAAFQaGVhZBSREIsAAADQAAAANmhoZWEIUAQDAAAArAAAACRobXR4CAAAAAAAAYAAAAAIbG9jYQCoAAAAAAHAAAAABm1heHABDQCUAAABCAAAACBuYW1lWD3y/QAAAxgAAAIlcG9zdMl9cHoAAAVAAAAALwABAAAEAAAAAFwEAAAAAAAD8wABAAAAAAAAAAAAAAAAAAAAAgABAAAAAQAAjGeuW18PPPUACwQAAAAAANi/5c0AAAAA2L/lzQAAAAAD8wP0AAAACAACAAAAAAAAAAEAAAACAIgAAQAAAAAAAgAAAAoACgAAAP8AAAAAAAAAAQQAAZAABQAAAokCzAAAAI8CiQLMAAAB6wAyAQgAAAIABQMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUGZFZABA4QDhAAQAAAAAXAQAAAAAAAABAAAAAAAABAAAAAQAAAAAAAACAAAAAwAAABQAAwABAAAAFAAEACIAAAAEAAQAAQAA4QD//wAA4QD//wAAAAEABAAAAAEAAAAAAAAAqAAAAAEAAAAAA/MD9ACHAAAJAi8GKwEPDR0BHwYJAQ8GHQEfDTsBPwYJAR8GOwE/Di8HCQE/Bj0BLw0rAQ8FA3T+jP6MBQYHBgcHCAcHBwcHBwYGBgUFAwMDAgEBAgMDAwUFAXT+jAUFAwMDAgEBAgMDAwUFBgYGBwcHBwcHBwgGBwYHBQF0AXQFBgcGBwcIBwcHBwcHBgYGBQQEAwMBAQEBAQEDAwQEBf6MAXQFBQMDAwIBAQIDAwMFBQYGBgcHBwcHBwgHBwYHBgPe/owBdAUFAwMDAgEBAgMDAwUFBgYGBwcHBwcHCAcGBwYHBf6M/owFBwYHBgcIBwcHBwcHBgYGBQUDBAICAQECAgQDBQUBdP6MBQUDBAICAQECAgQDBQUGBgYHBwcHBwcIBwYHBgcFAXQBdAYGBgcHBwcHBwcHBwcGBgYFBQMEAgIBAQIDAwMFAAAAEgDeAAEAAAAAAAAAAQAAAAEAAAAAAAEABwABAAEAAAAAAAIABwAIAAEAAAAAAAMABwAPAAEAAAAAAAQABwAWAAEAAAAAAAUACwAdAAEAAAAAAAYABwAoAAEAAAAAAAoALAAvAAEAAAAAAAsAEgBbAAMAAQQJAAAAAgBtAAMAAQQJAAEADgBvAAMAAQQJAAIADgB9AAMAAQQJAAMADgCLAAMAAQQJAAQADgCZAAMAAQQJAAUAFgCnAAMAAQQJAAYADgC9AAMAAQQJAAoAWADLAAMAAQQJAAsAJAEjIGVqLWljb25SZWd1bGFyZWotaWNvbmVqLWljb25WZXJzaW9uIDEuMGVqLWljb25Gb250IGdlbmVyYXRlZCB1c2luZyBTeW5jZnVzaW9uIE1ldHJvIFN0dWRpb3d3dy5zeW5jZnVzaW9uLmNvbQAgAGUAagAtAGkAYwBvAG4AUgBlAGcAdQBsAGEAcgBlAGoALQBpAGMAbwBuAGUAagAtAGkAYwBvAG4AVgBlAHIAcwBpAG8AbgAgADEALgAwAGUAagAtAGkAYwBvAG4ARgBvAG4AdAAgAGcAZQBuAGUAcgBhAHQAZQBkACAAdQBzAGkAbgBnACAAUwB5AG4AYwBmAHUAcwBpAG8AbgAgAE0AZQB0AHIAbwAgAFMAdAB1AGQAaQBvAHcAdwB3AC4AcwB5AG4AYwBmAHUAcwBpAG8AbgAuAGMAbwBtAAAAAAIAAAAAAAAACgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgECAQMABWNsb3NlAAAA) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#default_dashboard .text-align {
+    line-height: 160px;
+}
+
+#default_dashboard.e-dashboardlayout.e-control .e-panel .e-close-icon {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}

@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>
+    <div class="row">
+        <div class="col-2">
+            <img class="img" style="width: 40px;
+            height: 30px;" src="../../assets/images/dispenser.png" alt="My Happy SVG" />
+        </div>
+        <div class="col">
+            <h5 style="
+            margin-top: 5px; margin-left: 30px;
+            font: normal normal bold 12px/14px Montserrat;
+            letter-spacing: 0.24px;
+            color: #3D5161;
+            text-transform: capitalize;
+            opacity: 1;
+            " class="modal-title" id="exampleModalLabel">Edit Machine</h5>
+        </div>
+    </div>
+</h2>
+<div mat-dialog-content>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div style="margin-top: 20px;" class="form-group">
+            <label for="name">Dispenser Name</label>
+            <input style="height: 40px;" [(ngModel)]="data.name" type="text" formControlName="name" class="form-control"
+                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+            <div *ngIf=" f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">name is required</div>
+            </div>
+        </div>
+        <div style="margin-top: 10px;" class="form-group">
+            <label for="location">Model</label>
+            <input [(ngModel)]="data.model" style="height: 40px;" formControlName="model" type="text"
+                class="form-control" aria-label="Sizing example input" placeholder="model"
+                aria-describedby="inputGroup-sizing-lg">
+            <div *ngIf="f.model.errors" class="invalid-feedback">
+                <div *ngIf="f.model.errors.required">location is required</div>
+                <div *ngIf="f.model.errors.minlength">location is minimum length is 5</div>
+            </div>
+        </div>
+        <div style="margin-top: 10px;" class="form-group">
+            <label for="location">Code</label>
+            <input [(ngModel)]="data.code" style="height: 40px;" formControlName="code" type="text"
+                class="form-control" aria-label="Sizing example input" placeholder="code"
+                aria-describedby="inputGroup-sizing-lg">
+            <div *ngIf="f.code.errors" class="invalid-feedback">
+                <div *ngIf="f.code.errors.required">location is required</div>
+                <div *ngIf="f.code.errors.minlength">location is minimum length is 5</div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+<div mat-dialog-actions style="float: right;">
+    <button (click)="oncancel()" style="box-shadow: 0px 3px 6px #00000029;
+                                border-radius: 8px;
+                                opacity: 1; color: #FF7F5C; margin-right: 10px;
+                                border-color: #FF7F5C;
+                                " mat-raised-button>Cancel</button>
+    <button (click)="onSubmit()" style="background: #FF7F5C 0% 0% no-repeat padding-box;
+                                box-shadow: 0px 3px 6px #00000029;
+                                border-radius: 8px;
+                                opacity: 1;
+                                color: #FFFFFF;" mat-raised-button>Edit</button>
+</div>

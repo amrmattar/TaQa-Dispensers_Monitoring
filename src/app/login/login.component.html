@@ -1,0 +1,134 @@
+<div class="container-fluid" style="background-color: #f9f5f3">
+  <div class="row">
+    <div
+      class="col-8"
+      style="
+        top: -0.7361831665039062px;
+        left: -123.46533203125px;
+        min-height: 100vh;
+        background: transparent url(../../assets/imgs/login-img.svg) 0% 0%
+          no-repeat padding-box;
+        background-size: 683px 723px;
+        opacity: 1;
+      "
+    >
+      <br />
+      <br />
+      <br /><br /><br /><br /><br />
+      <br />
+      <br />
+      <br /><br /><br /><br /><br />
+      <br />
+      <br />
+      <div style="padding: 0 0 0 15rem;">
+        <h1
+        class=""
+        style="
+          text-align: left;
+          font: normal normal bold 40px/50px Montserrat;
+          letter-spacing: 0px;
+          color: #3d5161;
+          opacity: 1;
+        "
+      >
+        Welcome To FMS
+      </h1>
+      <p style="font-size: 1.2rem" class="text-muted" >
+        Ask the admin to create an account for you to 
+      </p>
+      <p style="font-size: 1.2rem ; margin-bottom: 1.8rem;" class="text-muted" >
+        start viewing your
+        dashboards
+      </p>
+      <button style="color: #3d5161;padding:  .6rem 1.5rem ;border-radius: 99px;background-color: transparent;font-weight: 600;">Request Account</button>
+      </div>
+      
+    </div>
+    <div class="col-4" style="background-color: #ff7f5c">
+      <br />
+      <br />
+      <br /><br /><br /><br /><br />
+      <div class="row">
+        <div class="col-4"></div>
+        <div
+          class="col-8"
+          style="
+            top: 254px;
+            left: 1525px;
+            width: 200px;
+            height: 93px;
+            background: transparent url('../../assets/imgs/brk-logo-trandy.png')
+              0% 0% no-repeat padding-box;
+            opacity: 1;
+          "
+        ></div>
+      </div>
+      <br />
+      <br />
+      <br /><br /><br />
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <div class="row justify-content-center">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <input
+                  style="height: 50px;padding-left: 2rem; background-color: #F4DBD4"
+                  type="text"
+                  formControlName="email"
+                  class="form-control rounded-pill"
+                  aria-label="Sizing example input"
+                  [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                  placeholder="email@domail.com"
+                  aria-describedby="inputGroup-sizing-lg"
+                />
+                <div
+                  *ngIf="submitted && f.email.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                </div>
+              </div>
+              <br />
+              <div class="form-group">
+                <input
+                  style="height: 50px;padding-left: 2rem; background-color: #F4DBD4"
+                  formControlName="password"
+                  type="password"
+                  class="form-control rounded-pill"
+                  aria-label="Sizing example input"
+                  placeholder="Password"
+                  aria-describedby="inputGroup-sizing-lg"
+                />
+                <div
+                  *ngIf="submitted && f.password.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f.password.errors.required">
+                    Password is required
+                  </div>
+                  <div *ngIf="f.password.errors.minlength">
+                    Password is minimum length is 5
+                  </div>
+                </div>
+              </div>
+              <br />
+              <button
+                (click)="onSubmit()"
+                type="button"
+                class="btn btn-lg rounded-pill example-form"
+                style="font-family: Montserrat; background-color: white; color: black; font-weight: 600; font-size: 1rem;"
+              >
+                <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+                LOGIN
+              </button>
+              <div *ngIf="error" class="alert alert-danger mt-3 mb-0">
+                {{ error }}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

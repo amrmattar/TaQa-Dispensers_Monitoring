@@ -1,0 +1,360 @@
+<!-- <div class="container-fluid bg-white">
+    <div class="row justify-content-around  mb-2" >
+      <div class="col-4"></div>
+      <div class="col-4 mt-4">
+              <select class="form-select form-select-lg mb-3" (change)="getLastAlarm($event.target.value); getLastReadDefault($event.target.value); getAllStatus($event.target.value)" aria-label=".form-select-lg example">
+              <option selected *ngFor="let station of allStations" [value]="station.id" >{{station.name}}</option>
+                </select>
+
+      </div>
+      <div class="col-4">
+
+      </div>
+
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="col-6">
+    </div>
+    <div class="col-6">
+        <button type="button" class="btn btn-warning btn-lg" (click)="redirect()"><mat-icon>keyboard_return
+          </mat-icon></button>
+    </div>
+  </div>
+  <br>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+
+        <div>
+      <mat-card class="example-card rounded bg-white" style="background-color: transparent;" *ngIf="lastRead">
+        <mat-card-header>
+          <div class="row">
+            <div class="col-4 ">
+              <span class="material-icons" style="color: skyblue;">
+                fiber_manual_record
+                </span>
+            </div>
+            <div class="col-2 mt-1">
+              <mat-card-title style="color: skyblue;"
+              > NOTIFICATION</mat-card-title
+            >
+            </div>
+          </div>
+        </mat-card-header>
+        <mat-card-content class="container-fluid" style="overflow-y: scroll; max-height: 150px;" >
+          <hr />
+          <div class="row justify-content-around">
+            <div class="col-2">
+              <span class="material-icons" style="font-size: 55px; color: rgb(168, 164, 164);">
+                priority_high
+                </span>
+            </div>
+            <div class="col-8 mt-3">
+              <h3>Compressor Status: {{state}}</h3>
+
+            </div>
+          </div>
+          <hr>
+        </mat-card-content>
+      </mat-card>
+        </div>
+    </div>
+        <div class=" row" style="background-color: transparent;">
+
+            <div>
+
+         <mat-card class="example-card rounded bg-white" style="background-color: transparent; " *ngIf="alarmReads">
+             <div class="row">
+               <div class="col-1 ">
+                 <span class="material-icons" style="color: red;">
+                   fiber_manual_record
+                   </span>
+               </div>
+               <div class="col-1 mt-1">
+                 <mat-card-title style="color: red;"
+                 > ALERTS</mat-card-title
+               >
+               </div>
+               <div class="col-5">
+                <div class="container-fluid bg-white">
+                       <div class="row justify-content-around " >
+                         <div class="col-4">
+                           <h3>Search Category</h3>
+                         </div>
+                         <div class="col-8 ">
+                                 <select class="form-select form-select-lg mb-3" (change)="searchTypeValue = $event.target.value" aria-label=".form-select-lg example">
+                                   <option selected >Select A Category</option>
+                                   <option *ngFor="let station of searchTypes" [value]="station.value" >{{station.name}}</option>
+                                   </select>
+
+                         </div>
+
+                       </div>
+                     </div>
+              </div>
+               <div class="col-5">
+                 <div class="container-fluid bg-white" *ngIf="searchTypeValue == 2">
+                        <div class="row justify-content-around " >
+                          <div class="col-4">
+                            <h3>Alarm Category</h3>
+                          </div>
+                          <div class="col-8 ">
+                                  <select class="form-select form-select-lg mb-3" (change)="getLastAllAlarm($event.target.value); alramValue=$event.target.value;" aria-label=".form-select-lg example">
+                                    <option selected >Select A Category</option>
+                                    <option *ngFor="let station of allStations" [value]="station.value" >{{station.name}}</option>
+                                    </select>
+
+                          </div>
+
+                        </div>
+                      </div>
+                 <div class="container-fluid bg-white" *ngIf="searchTypeValue == 1">
+                        <div class="row justify-content-around " >
+                          <div class="col-4">
+                            <h3>Class</h3>
+                          </div>
+                          <div class="col-8 ">
+                            <select *ngIf="searchTypeValue == 1" class="form-select form-select-lg mb-3" (change)="searchfilter3($event);" aria-label=".form-select-lg example">
+                              <option selected >Select A Class</option>
+                              <option *ngFor="let station of classNames" [value]="station.classCode" >{{station.className}}</option>
+                              </select>
+
+                          </div>
+
+                        </div>
+                      </div>
+               </div>
+             </div>
+             <div class="row">
+              <div class="col-6">
+                <h1 class="text-center" *ngIf="alarmReads.compressors[0].compressorCode == 'Most_Comp'">
+                  Mostord - {{alarmReads.compressors[0].noAlarms}} Alarm
+                </h1>
+                <h1 class="text-center" *ngIf="alarmReads.compressors[0].compressorCode == 'Rehab_Comp'">
+                 Rehab - {{alarmReads.compressors[0].noAlarms}} Alarm
+               </h1>
+               </div>
+               <div class="col-4">
+                <div class="input-group flex-nowrap">
+                  <span type="button" (click)="getLastAlarm(id); getGetLastAllAlarmsClass('M1');" class="input-group-text" id="addon-wrapping"
+                    ><i style="font-size: 24px" class="fa fa-times"></i></span
+                  >
+                  <input
+
+                    type="text"
+                    class="form-control"
+                    placeholder="Search By Alarm Class"
+                    aria-label="Username"
+                    aria-describedby="addon-wrapping"
+                    (keyup)="searchfilter($event)"
+                  />
+
+                </div>
+              </div>
+               <div class="col-2">
+                <button type="button" class="btn btn-warning btn-lg" *ngIf="alramValue == 3" (click)="getresetAllAlarm(3)">Clear Alarms</button>
+                <button type="button" class="btn btn-warning btn-lg" *ngIf="alramValue == 1" (click)="getresetAllAlarm(1)">Clear Alarms</button>
+                <button type="button" class="btn btn-warning btn-lg" *ngIf="alramValue == 2" (click)="getresetAllAlarm(2)">Clear Warnings</button>
+               </div>
+             </div>
+           <mat-card-content class="container-fluid" style="overflow-y: scroll;  max-height: 1050px;" >
+
+             <div class="row justify-content-around"  *ngFor="let alarm of alarmReads.compressors">
+               <hr>
+               <div class="col-2" *ngIf="alarmReads.compressors[0].noAlarms!= 0" >
+                 <span class="material-icons"  style="font-size: 35px; color: orange">
+                   priority_high
+                   </span>
+               </div>
+               <br>
+               <div class="col-9" *ngIf="alarmReads.compressors[0].noAlarms!= 0" >
+               <h4 *ngIf="alarm.value > 0">{{alarm.className}} - {{alarm.value}}</h4>
+               <h4 *ngIf="alarm.value <= 0">{{alarm.className}} - NA</h4>
+                 <div class="row justify-content-around">
+                     <div class="col-6">
+                         <h5>{{alarm.name}}</h5>
+                     </div>
+                     <div class="col-6">
+                         <h5>{{getTime(alarm.timeStamp)}}</h5>
+                     </div>
+                   </div>
+               </div>
+               <div class="col-1">
+                <button type="button" class="btn btn-warning btn-sm"  (click)="getresetSpecific(alarm.id)"><i style="font-size: 12px" class="fa fa-times"></i></button>
+
+               </div>
+             </div>
+
+             <hr>
+           </mat-card-content>
+         </mat-card>
+       </div>
+
+
+
+       </div>
+
+
+    </div>
+    <div class="col-6 bg-white">
+      <div class="row">
+
+        <div >
+      <mat-card class="example-card rounded bg-white" style="background-color: transparent;">
+        <mat-card-header>
+          <div class="row">
+            <div class="col-4">
+              <img src="../../assets/imgs/pereformance.svg"/>
+            </div>
+            <div class="col-8 mt-1">
+              <mat-card-title
+              >Performance Indicator KPI</mat-card-title
+            >
+            </div>
+          </div>
+        </mat-card-header>
+
+          <mat-card-content>
+            <hr />
+            <div class="row justify-content-center">
+                <div class="col-4">
+                  <circle-progress
+                  *ngIf="allStatus"
+                  [percent]="(allStatus[1].noState/(allStatus[1].noState+allStatus[2].noState))*100"
+                  [radius]="50"
+                  [outerStrokeWidth]="10"
+                  [innerStrokeWidth]="0"
+                  [outerStrokeColor]="'#00D1DE'"
+                  [innerStrokeColor]="'#00D1DE'"
+                  [animation]="true"
+                  [animationDuration]="300"
+                ></circle-progress>
+                </div>
+                <div class="col-4 mt-5">
+                  <h1 class="text-center" style="font-weight: bold;">{{lastRead.totalWorkingTime}}</h1>
+              </div>
+              <div class="col-4 mt-5">
+                <h1  class="text-center" style="font-weight: bold;">{{lastRead.totalPowerTime}}</h1>
+            </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-4">
+                <h3 class="ms-5">CT/RT (Today)</h3>
+              </div>
+              <div class="col-4">
+                <h3 class="text-center">Total Working Time</h3>
+              </div>
+              <div class="col-4">
+                <h3 class="text-center">Total Power On Time</h3>
+              </div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+        </div>
+    </div>
+      <mat-card class="example-card  p-3 mb-5 rounded" style=" background-color: transparent;">
+        <div class="row">
+          <div class="col-5">
+            <mat-card-header>
+              <div class="row">
+                <div class="col-4">
+                  <img src="../../assets/imgs/Activity.svg"/>
+                </div>
+                <div class="col-8 mt-1">
+                  <mat-card-title
+                  >Current Reads</mat-card-title
+                >
+                </div>
+              </div>
+            </mat-card-header>
+
+          </div>
+          <div class="col-7">
+            <mat-tab-group
+              mat-stretch-tabs
+              (selectedTabChange)="changeTab2($event)"
+            >
+            <!-- <mat-tab label="Consumption"> </mat-tab> -->
+            <mat-tab label="Hourly Status Profile"> </mat-tab>
+            <mat-tab label="Today Status OverAll"> </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+        <mat-card-content>
+
+          <div
+            id="chart"
+            *ngIf="inChartRender == true && outChartRender == false"
+          >
+          <div class="row">
+            <div id="chart" *ngIf="data">
+              <apx-chart
+              [series]="chartOptions.series"
+              [chart]="chartOptions.chart"
+              [dataLabels]="chartOptions.dataLabels"
+              [plotOptions]="chartOptions.plotOptions"
+              [responsive]="chartOptions.responsive"
+              [xaxis]="chartOptions.xaxis"
+              [legend]="chartOptions.legend"
+              [fill]="chartOptions.fill"
+              [tooltip]="chartOptions.tooltip"
+            ></apx-chart>
+            </div>
+          </div>
+
+          </div>
+          <div
+            id="chart"
+            *ngIf="inChartRender == false && outChartRender == true "
+          >
+          <div class="row">
+            <div id="chart" *ngIf="data">
+              <apx-chart
+                [series]="barChart.series"
+                [chart]="barChart.chart"
+                [dataLabels]="barChart.dataLabels"
+                [plotOptions]="barChart.plotOptions"
+                [yaxis]="barChart.yaxis"
+                [xaxis]="barChart.xaxis"
+                [legend]="barChart.legend"
+                [colors]="barChart.colors"
+                [grid]="barChart.grid"
+                [title]="barChart.title"
+                [tooltip]="barChart.tooltip"
+              ></apx-chart>
+            </div>
+          </div>
+
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <div class="row justify-content-center">
+        <div class="col-1">
+
+        </div>
+        <div class="col-10" id="chart" *ngIf="pieData">
+            <apx-chart
+              [series]="barChart2.series"
+              [chart]="barChart2.chart"
+              [dataLabels]="barChart2.dataLabels"
+              [plotOptions]="barChart2.plotOptions"
+              [yaxis]="barChart2.yaxis"
+              [xaxis]="barChart2.xaxis"
+              [legend]="barChart2.legend"
+              [colors]="barChart2.colors"
+              [grid]="barChart2.grid"
+              [title]="barChart2.title"
+              [tooltip]="barChart2.tooltip"
+            ></apx-chart>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+

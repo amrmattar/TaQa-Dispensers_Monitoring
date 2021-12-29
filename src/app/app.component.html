@@ -1,0 +1,16 @@
+<img *ngIf="img == false" style="width: 100%; height: 100%;" (click)="img = false;"
+  src="../../assets/imgs/Capture2.PNG" />
+
+<mat-sidenav-container *ngIf="img == true">
+  <mat-sidenav *ngIf="router.url != '/'" #appDrawer style="border-top-right-radius: 25px;" role="navigation" mode="side"
+    opened
+    [fixedInViewport]="true">
+    <app-side-nav></app-side-nav>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

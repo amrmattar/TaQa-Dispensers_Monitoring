@@ -1,0 +1,49 @@
+<div class="roles-grid">
+    <ejs-grid #gridRole [dataSource]='roles' height='100%'  allowPaging='true' [pageSettings]='pageSettings' [editSettings]='editSettings' [toolbar]='toolbar'  (commandClick)='clickHandler($event)' (toolbarClick)='clickHandler2($event)'>
+        <e-columns>
+            <e-column headerText='header' width='80'>
+                <ng-template #template >
+                    <button ejs-button (click)="btnClick1($event)" class="e-btn">Edit</button>
+                </ng-template>
+            </e-column>
+            <e-column field='name' headerText='Ship Country' width='150' isPrimaryKey='true' editType='dropdownedit' [edit]='editparams'></e-column>
+            <e-column headerText='Manage Records' width='160' [commands]='commands'></e-column>
+        </e-columns>
+        <ng-template #editSettingsTemplate let-data>
+            <div ngForm #orderForm="ngForm">
+               <ejs-tab #tab id="tab_wizard" showCloseButton=false >
+            <e-tabitems>
+
+                <e-tabitem [header]="{ 'text': 'Permissions' }">
+                <ng-template #content>
+                   <div id="tab2" >
+            <app-control-panel-permissions></app-control-panel-permissions>
+        </div>
+                </ng-template>
+                </e-tabitem>
+
+            </e-tabitems>
+        </ejs-tab>
+            </div>
+        </ng-template>
+    </ejs-grid>
+</div>
+
+
+<ejs-dialog id='dialog' #ejDialog1 isModal='true' header='Add Role'  [visible]='hidden' [target]='targetElement'
+width='500px'  showCloseIcon='true' height='250px'  (overlayClick)="onOverlayClick()">
+<ng-template #content>
+            <div class="form-row">
+            <div class="form-group col-md-12">
+                <div class="e-float-input e-control-wrapper" >
+                    <input [(ngModel)]="roleName"  id="role" name="role" type="text"   >
+                    <span class="e-float-line"></span>
+                    <label class="e-float-text e-label-top" for="role"> Role</label>
+                </div>
+            </div>
+        </div>
+</ng-template>
+    <ng-template #footerTemplate >
+        <button id="Button1" class="e-control e-btn e-primary e-flat" (click)="btnClick()" data-ripple="true">save role</button>
+    </ng-template>
+</ejs-dialog>

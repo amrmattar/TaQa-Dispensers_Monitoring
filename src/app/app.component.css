@@ -1,0 +1,30 @@
+mat-sidenav-content {
+    background-color: transparent;
+    overflow: hidden;
+  }
+  .mat-drawer .mat-list-base .mat-list-item {
+    color: #ffffff !important ;
+    overflow: hidden;
+  }
+
+  .mat-drawer{
+    background-color: #FF7F5C !important;
+    color: white;
+    overflow: hidden;
+  }
+  mat-sidenav {
+    overflow: hidden;
+  }
+  .mat-sidenav-container {
+  background-color: rgb(235, 245, 235) !important;
+  overflow: hidden;
+  }
+  
+  .mat-sidenav-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
+  }
+  
+

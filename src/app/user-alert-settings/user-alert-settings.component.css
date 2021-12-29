@@ -1,0 +1,33 @@
+
+.card-header{
+  font: normal normal bold 18px/24px Roboto;
+}
+#clock {
+  font-family: 'Orbitron', sans-serif;
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+#clock2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.section::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.section::-webkit-scrollbar-thumb {
+  background-color: #d4aa70;
+  border-radius: 100px;
+}
+
+.form-select-lg{
+  font-size: 1rem;
+}

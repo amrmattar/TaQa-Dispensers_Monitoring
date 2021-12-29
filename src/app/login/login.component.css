@@ -1,0 +1,16 @@
+
+.example-form {
+    min-width: 150px;
+    max-width: 355px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+    font-size: 20px;
+  }
+  /* .imgV 
+  {
+    background-image: url(../../assets/imgs/);
+  }
+   */

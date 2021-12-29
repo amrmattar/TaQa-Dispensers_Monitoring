@@ -1,0 +1,89 @@
+h1{
+    font: normal normal bold 25px/35px Montserrat;
+  }
+  h2{
+    font: normal normal bold 20px/25px Montserrat;
+    width: unset !important;
+  }
+  h3{
+    font: normal normal bold 17px/20px Montserrat;
+  }
+  h4{
+    font: normal normal bold 17px/20px Montserrat;
+  }
+  .card-header{
+    font: normal normal bold 18px/24px Roboto;
+  }
+.act:active{
+  background-color: #FF7F5C;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FF7F5C;
+  -webkit-transition: .4s;
+  transition: .4s;
+   border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 70px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #FF7F5C;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(55px);
+}
+
+/*------ ADDED CSS ---------*/
+.slider:after
+{
+ content:'List View';
+ color: white;
+ display: block;
+ position: absolute;
+ transform: translate(-50%,-50%);
+ top: 50%;
+ left: 50%;
+ font-size: 10px;
+ font-family: Verdana, sans-serif;
+}
+
+input:checked + .slider:after
+{
+  content:'Map View';
+}
+.hov:hover{
+  color: #FF7F5C;
+}

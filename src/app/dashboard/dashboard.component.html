@@ -1,0 +1,437 @@
+<div class="container-fluid" style="background-color: #f9f5f3">
+  <div class="row" style="background-color: white; padding: 0 1rem; position: fixed; width: calc(100% - 70px);">
+    <div class="col-2 mt-3">
+      <div class="row">
+        <div class="col-3">
+          <img src="../../assets/imgs/gas-station-svgrepo-com.svg" />
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col-4 mt-3">
+              <span
+                class="mt-2"
+                style="
+                  text-align: left;
+                  font: normal normal normal 27px/6px Roboto;
+                  letter-spacing: 0px;
+                  color: #3d5161;
+                  opacity: 1;
+                "
+                >{{ allStations.length }}/{{ allStations.length }}
+              </span>
+            </div>
+            <div class="col">
+              <h1
+                class="mt-2"
+                style="
+                  text-align: left;
+                  font: normal normal normal 10px Roboto;
+                  letter-spacing: 0px;
+                  color: #3d5161;
+                  opacity: 1;
+                "
+              >
+                Monitored <br />
+                Stations
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-5 mt-3 px-5">
+      <div
+        class="row"
+        style="
+          background: #f9f5f3 0% 0% no-repeat padding-box;
+          border-radius: 30px;
+          opacity: 1;
+          height: 30px;
+        "
+      >
+        <div
+          *ngIf="shift == 1"
+          class="col-4 rounded-pill"
+          style="
+            background-color: #ff7f5c;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <h1
+            type="button"
+            class="mt-3"
+            style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #ffffff;
+              text-transform: uppercase;
+              opacity: 1;
+            "
+            (click)="
+              shift = 1;
+              getLastReadtime(1);
+              getAllStationsVlaueTime(1);
+              getConsumptionDataTime(1);
+              getAllStationsTime(1)
+            "
+          >
+            Today
+          </h1>
+        </div>
+        <div
+          *ngIf="shift != 1"
+          class="col-4 rounded-pill"
+          style="
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <h1
+            type="button"
+            class="mt-3"
+            style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #3d5161;
+              text-transform: uppercase;
+              opacity: 1;
+            "
+            (click)="
+              shift = 1;
+              getLastReadtime(1);
+              getAllStationsVlaueTime(1);
+              getConsumptionDataTime(1);
+              getAllStationsTime(1)
+            "
+          >
+            Today
+          </h1>
+        </div>
+        <div
+          *ngIf="shift == 2"
+          class="col-4 rounded-pill"
+          style="
+            background-color: #ff7f5c;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <h1
+            type="button"
+            style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #ffffff;
+              text-transform: uppercase;
+              opacity: 1;
+            "
+            class="rounded-pill text-center mt-3"
+            (click)="
+              shift = 2;
+              getLastReadtime(2);
+              getAllStationsVlaueTime(2);
+              getConsumptionDataTime(2);
+              getAllStationsTime(2)
+            "
+          >
+            Yesterday
+          </h1>
+        </div>
+        <div
+          *ngIf="shift != 2"
+          class="col-4 rounded-pill"
+          style="
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <h1
+            type="button"
+            style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #3d5161;
+              text-transform: uppercase;
+              opacity: 1;
+            "
+            class="rounded-pill text-center mt-3"
+            (click)="
+              shift = 2;
+              getLastReadtime(2);
+              getAllStationsVlaueTime(2);
+              getConsumptionDataTime(2);
+              getAllStationsTime(2)
+            "
+          >
+            Yesterday
+          </h1>
+        </div>
+        <div
+          *ngIf="shift == 3"
+          class="col-4 rounded-pill"
+          style="
+            background-color: #ff7f5c;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <h1
+            type="button"
+            style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #ffffff;
+              text-transform: uppercase;
+              opacity: 1;
+            "
+            class="rounded-pill text-center mt-3"
+            (click)="
+              shift = 3;
+              getLastReadtime(3);
+              getAllStationsVlaueTime(3);
+              getConsumptionDataTime(3);
+              getAllStationsTime(3)
+            "
+          >
+            Last Week
+          </h1>
+        </div>
+        <div
+          *ngIf="shift != 3"
+          class="col-4 rounded-pill"
+          style="
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <h1
+            type="button"
+            style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #3d5161;
+              text-transform: uppercase;
+              opacity: 1;
+            "
+            class="rounded-pill text-center mt-3"
+            (click)="
+              shift = 3;
+              getLastReadtime(3);
+              getAllStationsVlaueTime(3);
+              getConsumptionDataTime(3);
+              getAllStationsTime(3)
+            "
+          >
+            Last Week
+          </h1>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-1"></div> -->
+    <div class="col-5">
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-2 mt-3">
+              <span class="material-icons" style="color: #ff7f5c">
+                play_arrow
+              </span>
+            </div>
+            <div class="col-10">
+              <mat-form-field style="width: 100%">
+                <input
+                  (dateChange)="fromDate($event)"
+                  matInput
+                  [ngxMatDatetimePicker]="picker"
+                  placeholder="Start date - time"
+                  [formControl]="dateControl"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker showSeconds="true">
+                </ngx-mat-datetime-picker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-2 mt-3">
+              <span class="material-icons" style="color: #ff7f5c"> stop </span>
+            </div>
+            <div class="col-10">
+              <mat-form-field style="width: 100%">
+                <input
+                  (dateChange)="toDate($event)"
+                  matInput
+                  [ngxMatDatetimePicker]="picker2"
+                  placeholder="End date - time"
+                  [formControl]="dateControl2"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker2"
+                ></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker2 showSeconds="true">
+                </ngx-mat-datetime-picker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+
+
+
+
+
+
+
+
+  <div class="dashboard" style="position: relative; top: 50px;">
+    <div style="line-height: 30px; margin-bottom: 15px; ">
+    <p class="dashboard-title d-inline">Dashboard </p>
+    <div style="float: right; display: inline-block;" >
+      <button style="border-radius: 120px;"  ejs-button id='saveBtn' class="btn-top"  #saveBtn cssClass="e-primary" (click)='onallow($event)'><ejs-switch [checked]="customEnable"></ejs-switch>  Edit</button>
+    <button  ejs-button class="e-btn e-info btn-top " *ngIf="customEnable == true"  (click)="onOpenDialog1($event)">add panel</button>
+    <button  ejs-button id='saveBtn' class="btn-top" *ngIf="customEnable == true"  #saveBtn cssClass="e-primary" (click)='onSaveClick($event)'>Save</button>
+
+</div>
+</div>
+    <ejs-dashboardlayout
+    #dashboard
+    id='dashboardLayout'
+    [cellSpacing]='cellSpacing'
+    [allowResizing]='allow'
+    [columns]="50"
+    [allowFloating]='allowFloating'
+    [cellAspectRatio]='cellAspectRatio'
+    [allowDragging]='allow'
+ (resizeStart)="onResizeStart($event)"
+      >
+      <e-panels>
+      </e-panels>
+    </ejs-dashboardlayout>
+</div>
+
+
+
+
+<!-- placing the custom component within ng-template -->
+<ng-template #CustomTemplate1>
+  <div style="height:100%; width: 100%;" class="templateContent">
+    <span id="close" class="e-template-icon e-close-icon closex" *ngIf="allow == true"
+    style="
+    height: 0px;
+    z-index: 1000;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    top: 5px;
+    float: right;
+    font-size: 1.3rem;
+    margin-right: 7px;" (click)="onCloseIconHandler($event)">x</span>
+    <app-dashboard-cards></app-dashboard-cards>
+  </div>
+</ng-template>
+<ng-template #CustomTemplate2>
+  <div style="height:100%; width: 100%;" class="templateContent">
+    <span id="close" class="e-template-icon e-close-icon closex" *ngIf="allow == true"
+    style="
+    height: 0px;
+    z-index: 1000;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    top: 5px;
+    float: right;
+    font-size: 1.3rem;
+    margin-right: 7px;" (click)="onCloseIconHandler($event)">x</span>
+    <app-list-chart></app-list-chart>
+  </div>
+</ng-template>
+<ng-template #CustomTemplate3 (mouseenter)="stop()">
+  <div style="height:100%; width: 100%;" class="templateContent">
+    <span id="close" class="e-template-icon e-close-icon closex" *ngIf="allow == true"
+    style="
+    height: 0px;
+    z-index: 10;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    top: 5px;
+    font-size: 1.3rem;
+    float: right;
+    margin-right: 7px;" (click)="onCloseIconHandler($event)">x</span>
+    <!-- <app-time-line></app-time-line> -->
+  </div>
+</ng-template>
+<ng-template #CustomTemplate4>
+  <div style="height:100%; width: 100%;" class="templateContent">
+    <span id="close" class="e-template-icon e-close-icon closex" *ngIf="allow == true"
+    style="
+    height: 0px;
+    z-index: 10;
+    cursor: pointer;
+    position: relative;
+    display: block;
+    top: 5px;
+    font-size: 1.3rem;
+    float: right;
+    margin-right: 7px;" (click)="onCloseIconHandler($event)">x</span>
+    <app-radar-chart></app-radar-chart>
+  </div>
+</ng-template>
+<!-- adding a ng container to append the template in the container -->
+<ng-container #viewContainer></ng-container>
+
+
+
+<ejs-dialog id='dialog' style="max-height: 1000px !important;" #ejDialog1 isModal='true' header='PANALS' [visible]='hidden' [target]='targetElement'
+  width='500px' showCloseIcon='true' max-height='500px' height='200px' (overlayClick)="onOverlayClick()"
+   [position]='position1'>
+  <ng-template #content>
+    <ejs-dropdownlist id='ddlelement' #samples [dataSource]='panals' [placeholder]='placeholder' (change)='onChange($event)' floatLabelType="Auto"></ejs-dropdownlist>
+  </ng-template>
+  <ng-template #footerTemplate>
+
+  <button id="Button1" class="e-control e-btn e-primary e-flat" (click)="BtnClick($event)" data-ripple="true">OK</button>
+  </ng-template>
+</ejs-dialog>
+
+
+
+
+
+
+
+
+  <!-- MAIN CONTENT -->
+  <!-- <div class="row">
+    <div class="col-9">
+      <app-dashboard-cards></app-dashboard-cards>
+      <app-list-chart></app-list-chart>
+    </div>
+    <div class="col-xl-3 col-10">
+     <app-radar-chart></app-radar-chart>
+    </div>
+  </div>
+</div> -->

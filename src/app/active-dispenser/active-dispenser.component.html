@@ -1,0 +1,217 @@
+<div class="container-fluid">
+  <div class=" row justify-content-center">
+    <h1>Dispenser Details</h1>
+  <br><br><br><br><br><br><br><br>
+  <div class="row">
+  <div class="col-4" *ngFor="let dispenser of allDispensers.machinesDTO">
+      <div *ngFor="let dis of dispenser.dtOs" style="border-left:7px   solid #3D5161; height: 420px;" class="col">
+        <div class="row">
+            <div style="border-top: 3px solid #3D5161;" class="col-2 mt-4 ms-3 ">
+              </div>
+              <div  class="col">
+                  <div class="row" >
+                      <div class="col-3">
+                              <img style="width: 70px;" src="../../assets/imgs/gas.svg"/>
+                      </div>
+                      <div class="col mt-3">
+                      <h1>{{dispenser.machineId}}-{{dis.dispenser_No}}</h1>
+                      </div>
+
+                  </div>
+                </div>
+        </div>
+        <br><br>
+        <div class="row ms-4">
+            <h3>Total Sales</h3>
+            <div class="col-10">
+              <h3 *ngIf="dis.totalConsumptionToday > 0">{{(dis.totalConsumptionToday/0.744).toFixed() | number:''}} m <sup>3</sup></h3>
+              <h3 *ngIf="dis.totalConsumptionToday <= 0">Not Monitored</h3>
+            </div>
+
+        </div>
+        <br>
+        <div class="row ms-4">
+              <h3>Total Transaction Count</h3>
+              <div class="col-10">
+                  <h3 *ngIf="dis.totalVehicel > 0">{{dis.totalVehicel}}</h3>
+                  <h3  *ngIf="dis.totalVehicel <= 0">Not Monitored</h3>
+                </div>
+        </div>
+        <br>
+        <div class="row ms-4">
+          <h3>Total Value</h3>
+          <div class="col-10">
+            <h3 *ngIf="dis.totalConsumptionToday > 0">{{((dis.totalConsumptionToday/0.744) * 3.5).toFixed() | number:''}} EGP</h3>
+            <h3 *ngIf="dis.totalConsumptionToday <= 0">Not Monitored</h3>
+          </div>
+
+      </div>
+        <br><br><br><br><br>
+        <!-- <div class="row">
+              <div style="border-top: 3px solid #3D5161;" class="col-2 mt-4 ms-3 ">
+                </div>
+                <div  class="col">
+                      <div class="row">
+                          <div class="col-3">
+                                  <img style="width: 70px;" src="../../assets/imgs/gas.svg"/>
+                          </div>
+                          <div class="col mt-3">
+                              <h1>Dispenser 04-02</h1>
+                          </div>
+
+                      </div>
+                    </div>
+          </div> -->
+          <!-- <br><br>
+        <div class="row ms-4">
+            <h3>Consumption</h3>
+            <div class="col-10">
+              <h3 *ngIf="allDispensers[0]">{{allDispensers[1].totalConsumptionToday | number:''}} m <sup>3</sup></h3>
+            </div>
+
+        </div>
+        <br>
+        <div class="row ms-4">
+              <h3>Total Transaction Count</h3>
+              <div class="col-10">
+                  <h3 *ngIf="allDispensers[0]">{{allDispensers[1].totalVehicel}}</h3>
+                </div>
+        </div>
+        <br>
+        <div class="row ms-4">
+          <h3>Cost</h3>
+          <div class="col-10">
+            <h3 *ngIf="allDispensers[0]">{{allDispensers[1].totalConsumptionToday * 3.5 | number:''}} EGP</h3>
+          </div>
+
+      </div> -->
+        </div>
+  </div>
+
+  <div class="col-4">
+    <div class="row">
+      <h1 class="text-center">Hourly Sale</h1>
+      <div id="chart" *ngIf="vehicleData !=null">
+          <apx-chart
+            [series]="hourlyChart.series"
+            [chart]="hourlyChart.chart"
+            [xaxis]="hourlyChart.xaxis"
+            [stroke]="hourlyChart.stroke"
+            [colors]="hourlyChart.colors"
+            [dataLabels]="hourlyChart.dataLabels"
+            [tooltip]="hourlyChart.tooltip"
+            [plotOptions]="hourlyChart.plotOptions"
+            [markers]="hourlyChart.markers"
+            [yaxis]="hourlyChart.yaxis"
+            [fill]="hourlyChart.fill"
+            [legend]="hourlyChart.legend"
+          ></apx-chart>
+
+        </div>
+    </div>
+
+        <br>
+        <div class="row" *ngFor="let dispenser of allDispensers.machinesDTO">
+          <div class="col-4">
+            <h3 class="text-center" *ngIf="dispenser">{{dispenser.machineId}}
+            </h3>
+          </div>
+          <div class="col-8">
+            <h3 class="text-center" *ngIf="dispenser.dtOs[0].totalConsumptionToday >0 || dispenser.dtOs[1].totalConsumptionToday >0">
+              {{((dispenser.dtOs[0].totalConsumptionToday/0.744) + (dispenser.dtOs[1].totalConsumptionToday/0.744)).toFixed()}} - m <sup>3</sup>
+            </h3>
+            <h3 class="text-center" *ngIf="dispenser.dtOs[0].totalConsumptionToday <=0 && dispenser.dtOs[1].totalConsumptionToday <=0">
+              Not Monitored
+            </h3>
+          </div>
+        </div>
+  </div>
+  </div>
+  </div>
+  <br><br>
+  <div class=" row justify-content-center">
+
+  <div class="col-12">
+    <div class="row">
+      <div class="col-5 mt-1">
+        <h3
+        >Sale Overview</h3
+      >
+      </div>
+      <div class="col-7">
+        <mat-tab-group
+          mat-stretch-tabs
+          (selectedTabChange)="changeTab($event)"
+        >
+        <!-- <mat-tab label="Consumption"> </mat-tab> -->
+        <mat-tab label="Transaction Count"> </mat-tab>
+        <mat-tab label="Sale"> </mat-tab>
+        <mat-tab label="Value"> </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+      <div
+      id="chart"
+      *ngIf=" outChartRender == false&& oilChartRender == false&&data !=null"
+    >
+    <apx-chart
+    [series]="inChart.series"
+    [chart]="inChart.chart"
+    [xaxis]="inChart.xaxis"
+    [yaxis]="inChart.yaxis"
+    [stroke]="inChart.stroke"
+    [tooltip]="inChart.tooltip"
+    [dataLabels]="inChart.dataLabels"
+  ></apx-chart>
+    </div>
+    <div
+      id="chart"
+      *ngIf=" inChartRender == false && oilChartRender == false &&outChartRender == true"
+    >
+    <apx-chart
+    [series]="outChart.series"
+    [chart]="outChart.chart"
+    [xaxis]="outChart.xaxis"
+    [yaxis]="outChart.yaxis"
+    [stroke]="outChart.stroke"
+    [tooltip]="outChart.tooltip"
+    [dataLabels]="outChart.dataLabels"
+  ></apx-chart>
+    </div>
+    <div
+      id="chart"
+      *ngIf=" inChartRender == false && oilChartRender == true &&outChartRender == false"
+    >
+    <apx-chart
+    [series]="oilChart.series"
+    [chart]="oilChart.chart"
+    [xaxis]="oilChart.xaxis"
+    [yaxis]="oilChart.yaxis"
+    [stroke]="oilChart.stroke"
+    [tooltip]="oilChart.tooltip"
+    [dataLabels]="oilChart.dataLabels"
+  ></apx-chart>
+    </div>
+  </div>
+  <!-- <div class="col-4">
+      <h1 class="text-center">Hourly Sale</h1>
+      <div id="chart" *ngIf="vehicleData !=null">
+          <apx-chart
+            [series]="hourlyChart.series"
+            [chart]="hourlyChart.chart"
+            [xaxis]="hourlyChart.xaxis"
+            [stroke]="hourlyChart.stroke"
+            [colors]="hourlyChart.colors"
+            [dataLabels]="hourlyChart.dataLabels"
+            [tooltip]="hourlyChart.tooltip"
+            [plotOptions]="hourlyChart.plotOptions"
+            [markers]="hourlyChart.markers"
+            [yaxis]="hourlyChart.yaxis"
+            [fill]="hourlyChart.fill"
+            [legend]="hourlyChart.legend"
+          ></apx-chart>
+
+        </div>
+    </div> -->
+  </div>
+</div>

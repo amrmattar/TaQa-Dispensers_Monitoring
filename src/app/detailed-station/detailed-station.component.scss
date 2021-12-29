@@ -1,0 +1,235 @@
+h1{
+  font: normal normal bold 23px/27px Montserrat;
+}
+h2{
+  font: normal normal bold 20px/25px Montserrat;
+}
+h3{
+  font: normal normal bold 17px/20px Montserrat;
+}
+h4{
+  font: normal normal bold 17px/20px Montserrat;
+}
+.card-header{
+  font: normal normal bold 18px/24px Roboto;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FF7F5C;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #FF7F5C;
+}
+#clock {
+  font-family: 'Orbitron', sans-serif;
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.section{
+  margin-top: 20px;
+  overflow-y: auto;
+  overflow-x:hidden;
+  height: 400px;
+}
+/* .section::-webkit-scrollbar {
+  width: 16px;
+} */
+
+.section::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.section::-webkit-scrollbar-thumb {
+  background-color: #d4aa70;
+  border-radius: 100px;
+}
+
+
+.section2{
+  margin-top: 20px;
+  overflow-y: auto;
+  overflow-x:hidden;
+  height: 500px;
+}
+/* .section::-webkit-scrollbar {
+  width: 16px;
+} */
+
+.section2::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.section2::-webkit-scrollbar-thumb {
+  background-color: #d4aa70;
+  border-radius: 100px;
+}
+
+.state_com{
+  background-color: #FF7F5C;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  line-height: 50px;
+  span{
+    position: relative;
+    top: 3px;
+    color: #fcede5;
+    font-size: 1.1rem;
+  }
+  img{
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 50px;
+    width: 30px;
+  }
+}
+.alarm , .warn{
+  background-color: #fff;
+  line-height: 50px;
+    .ico{
+      margin-left: 15px;
+      margin-right: 10px;
+      position: relative;
+      top: 3px;
+      font-size: 1.25rem !important;
+    }
+    span{
+      font-size: 1rem;
+      color: #3D5161;
+      font-weight: 500;
+    }
+}
+
+.gauge{
+  height: 550px;
+  border-radius: 15px;
+
+}
+
+.gauge-container{
+  height: 600px;
+  background-color: #fff;
+  border-radius: 5px;
+.gauge-container-content{
+  height: 550px;
+  overflow: auto;
+  .col-3{
+    height: 275px !important;
+  }
+}
+  .gauge-container-header{
+    line-height: 50px;
+    height: 50px !important;
+    .row{
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .station-Details{
+      margin-top: 30px;
+      // margin-left: -50px;
+      font: normal normal bold 12px/14px Montserrat;
+      letter-spacing: 1.2px;
+      color: #3d5161;
+      text-transform: uppercase;
+      opacity: 1;
+    }
+    .inner-taps{
+      color: #919191;
+    font-size: 1rem;
+      cursor: pointer;
+      border-bottom: 1px solid lightgray;
+    }
+  }
+}
+.fake-head-taps{
+  cursor: pointer;
+  line-height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid lightgray;
+
+  div{
+    color: #919191;
+    font-size: 1rem;
+  }
+}
+
+ .sliderwrap {
+        margin-top: 0px;
+        width: 300px;
+        align-self: center;
+    }
+
+    #slider.e-control.e-slider .e-handle {
+        background-color: #4B4B4B;
+    }
+
+    #range-container_Axis_0_Annotation_1 .e-control-wrapper.e-slider-container.e-horizontal .e-slider-track {
+        background: -webkit-linear-gradient(left, #ea501a 0, #ea501a 20%, #f79c02 40%, #e5ce20 60%, #a1cb43 80%, #82b944 100%);
+        background: linear-gradient(left, #ea501a 0, #ea501a 20%, #f79c02 40%, #e5ce20 60%, #a1cb43 80%, #82b944 100%);
+        background: -moz-linear-gradient(left, #ea501a 0, #ea501a 20%, #f79c02 40%, #e5ce20 60%, #a1cb43 80%, #82b944 100%);
+    }
+
+    .e-limit-bar.e-limits {
+        background-color: transparent !important;
+    }
+
+    .e-control-wrapper.e-slider-container.e-horizontal .e-range {
+        height: 0px !important;
+    }
+
+    #slider.e-control.e-slider .e-slider-track {
+        height: 8px;
+        top: calc(50% - 4px);
+        border-radius: 5px;
+    }
+
+.despenser-total-card{
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 10px;
+  .title-despenser{
+    line-height: 50px;
+    height: 50px;
+    border-bottom: 1px solid lightgray;
+    span{
+      margin-left: 10px;
+      font-size: 1rem;
+      color: #465058;
+      font-weight: 500;
+    }
+  }
+  .dispenser-number{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #465058;
+  }
+  .dispenser-parameter{
+    margin-left: 15px;
+    font-size: 1rem;
+    // font-weight: 500;
+    color: #465058;
+  }
+   .gas-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 4px;
+    border: 1px solid #3D5161;
+  }
+}

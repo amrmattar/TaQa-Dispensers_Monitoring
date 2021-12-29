@@ -1,0 +1,228 @@
+<div class="container row justify-content-center">
+        <div class="col-11 col-xl-3">
+          <div
+            class="card mb-2"
+            style="
+              background: #f4dbd4 0% 0% no-repeat padding-box;
+              border-radius: 24px;
+              opacity: 1;
+            "
+          >
+            <div class="card-body">
+              <br />
+              <div class="row">
+                <h1
+                  class="text-center"
+                  style="
+                    text-align: left;
+                    font: normal normal normal 1.7rem Roboto;
+                    letter-spacing: 0px;
+                    color: #3d5161;
+                    opacity: 1;
+                  "
+                  *ngIf="valuesOfStation"
+                >
+                  {{
+                    ((valuesOfStation.totalConsumption / 0.744) * 3.5).toFixed()
+                      | number: ""
+                  }}
+                  <span style="font-size: 1rem">EGP</span>
+                </h1>
+              </div>
+              <div>
+                <h4
+                  class="text-center"
+                  style="
+                    text-align: left;
+                    font: normal normal bold 12px Montserrat;
+                    letter-spacing: 0px;
+                    color: #3d5161;
+                    opacity: 1;
+                  "
+                >
+                  Total Value
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-10 col-xl-3">
+          <div
+            class="card mb-2"
+            style="
+              background: #ffffff 0% 0% no-repeat padding-box;
+              border-radius: 24px;
+              opacity: 1;
+            "
+          >
+            <div class="card-body">
+              <br />
+
+              <div class="row">
+                <h2
+                  class="text-center"
+                  style="
+                    text-align: left;
+                    font: normal normal normal 1.7rem Roboto;
+                    letter-spacing: 0px;
+                    color: #3d5161;
+                    opacity: 1;
+                  "
+                  *ngIf="valuesOfStation.totalConsumption > 0"
+                >
+                  {{
+                    (valuesOfStation.totalConsumption / 0.744).toFixed()
+                      | number: ""
+                  }}
+
+                  <span style="font-size: 1rem">m<sup>3</sup></span>
+                </h2>
+                <h2
+                  class="text-center"
+                  style="
+                    text-align: left;
+                    font: normal normal normal 1.7rem Roboto;
+                    letter-spacing: 0px;
+                    color: #3d5161;
+                    opacity: 1;
+                  "
+                  *ngIf="valuesOfStation.totalConsumption <= 0"
+                >
+                  Not Monitored
+                </h2>
+              </div>
+              <div class="row">
+                <h4
+                  class="text-muted text-center"
+                  style="
+                    text-align: left;
+                    font: normal normal bold 12px Montserrat;
+                    letter-spacing: 0px;
+                    color: #3d5161;
+                    opacity: 1;
+                  "
+                >
+                  Total Sales
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-10 col-xl-3">
+          <div
+            class="card mb-2"
+            style="
+              background: #ffffff 0% 0% no-repeat padding-box;
+              border-radius: 24px;
+              opacity: 1;
+            "
+          >
+            <div class="card-body">
+              <br />
+              <div class="row">
+                <h2
+                  class="text-center"
+                  style="
+                    text-align: left;
+                    font: normal normal normal 1.7rem Roboto;
+                    letter-spacing: 0px;
+                    color: #3d5161;
+                    opacity: 1;
+                  "
+                  *ngIf="valuesOfStation.avgConsumption > 0"
+                >
+                  {{
+                    (valuesOfStation.avgConsumption / 0.744).toFixed()
+                      | number: ""
+                  }}
+
+                  <span style="font-size: 1rem"> m<sup>3</sup>/trans.</span>
+                </h2>
+                <h2
+                  class="text-center"
+                  style="
+                    text-align: left;
+                    font: normal normal normal 40px/53px Roboto;
+                    letter-spacing: 0px;
+                    color: #3d5161;
+                    opacity: 1;
+                  "
+                  *ngIf="valuesOfStation.avgConsumption <= 0"
+                >
+                  Not Monitored
+                </h2>
+              </div>
+              <div class="row">
+                <h4
+                  class="text-muted text-center"
+                  style="
+                    text-align: left;
+                    font: normal normal bold 12px Montserrat;
+                    letter-spacing: 0px;
+                    color: #3d5161;
+                    opacity: 1;
+                  "
+                >
+                  Avg Sales (Today)
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-10 col-xl-3">
+          <div
+            class="card mb-2"
+            style="
+              background: #ffffff 0% 0% no-repeat padding-box;
+              border-radius: 24px;
+              opacity: 1;
+            "
+          >
+            <div class="card-body">
+              <br />
+              <div class="row">
+                <h2
+                  class="text-center"
+                  style="
+                    text-align: left;
+                    font: normal normal normal 1.7rem Roboto;
+                    letter-spacing: 0px;
+                    color: #3d5161;
+                    opacity: 1;
+                  "
+                  *ngIf="valuesOfStation.totalVehicle > 0"
+                >
+                  {{ valuesOfStation.totalVehicle.toFixed() }}
+                </h2>
+                <h2
+                  class="text-center"
+                  style="
+                    text-align: left;
+                    font: normal normal normal 40px/53px Roboto;
+                    letter-spacing: 0px;
+                    color: #3d5161;
+                    opacity: 1;
+                  "
+                  *ngIf="valuesOfStation.totalVehicle <= 0"
+                >
+                  Not Monitored
+                </h2>
+              </div>
+              <div class="row">
+                <h4
+                  class="text-muted text-center"
+                  style="
+                    text-align: left;
+                    font: normal normal bold 11px Montserrat;
+                    letter-spacing: 0px;
+                    color: #3d5161;
+                    opacity: 1;
+                  "
+                >
+                  Total Transaction Count
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

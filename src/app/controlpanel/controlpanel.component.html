@@ -1,0 +1,1030 @@
+<div style="background-color: #f9f5f3">
+  <div class="container" style="background-color: #f9f5f3">
+    <div class="row gx-5">
+      <div class="col">
+        <div
+          (click)="clicked('1')"
+          [style.height]="selectedTab == 'station' ? '140px' : '100px'"
+          [style.background-color]="
+            selectedTab == 'station' ? '#FF7F5C' : '#F4DBD4'
+          "
+          style="
+            background-color: #ff7f5c33;
+            height: 100px;
+            border-bottom-left-radius: 20px;
+            align-items: center;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding-left: 1rem;
+          "
+        >
+          <img
+            class="img"
+            style="width: 50px;margin-right: 1rem;"
+            src="../../assets/images/gas-station.png"
+            alt="My Happy SVG"
+          />
+          <h2 style="font-weight: 500; font-size: 1.2rem">Stations</h2>
+        </div>
+      </div>
+      <div class="col">
+        <div
+          (click)="clicked('2')"
+          [style.height]="selectedTab == 'dispenser' ? '140px' : '100px'"
+          [style.background-color]="
+            selectedTab == 'dispenser' ? '#FF7F5C' : '#F4DBD4'
+          "
+          class="row hover"
+          style="
+            background-color: #f4dbd4;
+            height: 100px;
+            border-bottom-left-radius: 20px;
+            align-items: center;
+          "
+        >
+          <div class="col-2">
+            <img
+              class="img"
+              style="width: 61px; height: 50px"
+              src="../../assets/images/dispenser.png"
+              alt="My Happy SVG"
+            />
+          </div>
+          <div class="col mt-3 ms-4">
+            <h2>Dispenser</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div
+          (click)="clicked('3')"
+          [style.height]="selectedTab == 'compressor' ? '140px' : '100px'"
+          [style.background-color]="
+            selectedTab == 'compressor' ? '#FF7F5C' : '#F4DBD4'
+          "
+          class="row hover"
+          style="
+            background-color: #f4dbd4;
+            height: 100px;
+            border-bottom-left-radius: 20px;
+            align-items: center;
+          "
+        >
+          <div class="col-2">
+            <img
+              class="img"
+              style="width: 61px; height: 50px"
+              src="../../assets/images/compressor.png"
+              alt="My Happy SVG"
+            />
+          </div>
+          <div class="col mt-3 ms-4">
+            <h2>Compressor</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div
+          (click)="clicked('4')"
+          [style.height]="selectedTab == 'nozele' ? '140px' : '100px'"
+          [style.background-color]="
+            selectedTab == 'nozele' ? '#FF7F5C' : '#F4DBD4'
+          "
+          class="row hover"
+          style="
+            background-color: #f4dbd4;
+            height: 100px;
+            border-bottom-left-radius: 20px;
+            align-items: center;
+          "
+        >
+          <div class="col-1">
+            <img
+              class="img"
+              style="width: 50px; height: 40px"
+              src="../../assets/images/nozzle.png"
+              alt="My Happy SVG"
+            />
+          </div>
+          <div class="col mt-3 ms-4">
+            <h2 style="margin-left: 10px">Nozzle</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col" *ngIf="admin == true">
+        <div
+          (click)="clicked('5')"
+          [style.height]="selectedTab == 'user' ? '140px' : '100px'"
+          [style.background-color]="
+            selectedTab == 'user' ? '#FF7F5C' : '#F4DBD4'
+          "
+          class="row hover"
+          style="
+            background-color: #f4dbd4;
+            height: 100px;
+            border-bottom-left-radius: 20px;
+            align-items: center;
+          "
+        >
+          <div class="col-1">
+            <span
+              style="
+                font-size: 50px;
+                background: transparent no-repeat padding-box;
+                color: #3d5161;
+                opacity: 1;
+              "
+              class="material-icons"
+            >
+              account_circle
+            </span>
+          </div>
+          <div class="col mt-3 ms-4">
+            <h2 style="margin-left: 10px">Users</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col" *ngIf="admin == true">
+        <div
+          (click)="clicked('6')"
+          [style.height]="selectedTab == 'role' ? '140px' : '100px'"
+          [style.background-color]="
+            selectedTab == 'role' ? '#FF7F5C' : '#F4DBD4'
+          "
+          class="row hover"
+          style="
+            background-color: #f4dbd4;
+            height: 100px;
+            border-bottom-left-radius: 20px;
+            align-items: center;
+          "
+        >
+          <div class="col-1">
+            <span
+              style="
+                font-size: 50px;
+                background: transparent no-repeat padding-box;
+                color: #3d5161;
+                opacity: 1;
+              "
+              class="material-icons"
+            >
+              person_add
+            </span>
+          </div>
+          <div class="col mt-3 ms-4">
+            <h2 style="margin-left: 10px">Roles</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="selectedTab == 'station'">
+        <table
+          class="table"
+          style="
+            background-color: #ffffff;
+            width: 80%;
+            margin-top: 100px;
+            margin-left: 100px;
+            box-shadow: 0px 8px 12px #0000001a;
+          "
+        >
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">StationName</th>
+              <th scope="col">ChannelId</th>
+              <th scope="col">Location</th>
+              <th scope="col">Address</th>
+              <th scope="col">Machines</th>
+              <th scope="col">Compressors</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let s of stations">
+              <td>
+                <span
+                  style="
+                    width: 13px;
+                    height: 13px;
+                    color: #ff7f5c;
+                    font-size: 20px;
+                  "
+                  class="material-icons"
+                >
+                  fiber_manual_record
+                </span>
+              </td>
+              <td>{{ s.name }}</td>
+              <td *ngIf="s.id != null">{{ s.id }}</td>
+              <td *ngIf="s.location != null">{{ s.location }}</td>
+              <td *ngIf="s.address != null">{{ s.address }}</td>
+              <td *ngIf="s.machines != null">{{ s.machines }}</td>
+              <td *ngIf="s.compressors != null">{{ s.compressors }}</td>
+              <td *ngIf="s.location == null"></td>
+              <td *ngIf="s.address == null"></td>
+              <td *ngIf="s.machines == null"></td>
+              <td *ngIf="s.compressors == null"></td>
+              <td>
+                <img
+                  (click)="onedit(s)"
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    background-color: #3d516133;
+                    border-radius: 7px;
+                  "
+                  src="../../assets/images/edit.png"
+                  alt="My Happy SVG"
+                />
+                <img
+                  (click)="ondelStation(s.id)"
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    background-color: #ff7f5c33;
+                    margin-left: 20px;
+                    border-radius: 7px;
+                  "
+                  src="../../assets/images/delete.png"
+                  alt="My Happy SVG"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="background-color: #f9f5f3" class="col mt-5">
+          <button
+            class="add"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            style="float: right; margin-right: 155px"
+            mat-raised-button
+          >
+            <i style="margin-bottom: 3px" class="material-icons">add</i> Add New
+          </button>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <img
+                    class="img"
+                    style="width: 40px; height: 30px"
+                    src="../../assets/images/gas-station.png"
+                    alt="My Happy SVG"
+                  />
+                  <h5
+                    style="
+                      margin-top: 15px;
+                      text-align: left;
+                      font: normal normal bold 12px/14px Montserrat;
+                      letter-spacing: 0.24px;
+                      color: #3d5161;
+                      text-transform: capitalize;
+                      opacity: 1;
+                      margin-left: 10px;
+                    "
+                    class="modal-title"
+                    id="exampleModalLabel"
+                  >
+                    Add New Station
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="formVar" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                      <div class="col">
+                        <div class="mb-3">
+                          <label
+                            for="exampleFormControlInput1"
+                            class="form-label"
+                            >Station Name</label
+                          >
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="exampleFormControlInput1"
+                            placeholder="Placeholder ..."
+                            formControlName="name"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="mb-3">
+                          <label
+                            for="exampleFormControlInput1"
+                            class="form-label"
+                            >Location</label
+                          >
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="exampleFormControlInput1"
+                            placeholder="Placeholder ..."
+                            formControlName="address"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    style="
+                      box-shadow: 0px 3px 6px #00000029;
+                      border-radius: 8px;
+                      opacity: 1;
+                      color: #ff7f5c;
+                      margin-right: 10px;
+                      border-color: #ff7f5c;
+                    "
+                    mat-raised-button
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    (click)="onSubmit()"
+                    style="
+                      background: #ff7f5c 0% 0% no-repeat padding-box;
+                      box-shadow: 0px 3px 6px #00000029;
+                      border-radius: 8px;
+                      opacity: 1;
+                      color: #ffffff;
+                    "
+                    mat-raised-button
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div *ngIf="selectedTab == 'dispenser'">
+      <div class="col">
+        <button
+          style="
+            float: right;
+            bottom: 60px;
+            right: 160px;
+            text-align: left;
+            font: normal normal medium 14px/18px Montserrat;
+            letter-spacing: 0.28px;
+            color: #3d5161;
+            opacity: 1;
+          "
+          mat-raised-button
+        >
+          Station Filtre <span class="material-icons"> expand_more </span>
+        </button>
+      </div>
+      <table
+        class="table"
+        style="
+          background-color: #ffffff;
+          width: 80%;
+          margin-top: 100px;
+          margin-left: 100px;
+        "
+      >
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Dispenser Name</th>
+            <th scope="col">Model</th>
+            <th scope="col">Code</th>
+            <th scope="col">StationId</th>
+            <th scope="col">Station</th>
+            <th scope="col">Dispenser</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of machines">
+            <td>
+              <span
+                style="
+                  width: 13px;
+                  height: 13px;
+                  color: #ff7f5c;
+                  font-size: 20px;
+                "
+                class="material-icons"
+              >
+                fiber_manual_record
+              </span>
+            </td>
+            <td>{{ s.name }}</td>
+            <td *ngIf="s.model != null">{{ s.model }}</td>
+            <td *ngIf="s.code != null">{{ s.code }}</td>
+            <td *ngIf="s.stationId != null">{{ s.stationId }}</td>
+            <td *ngIf="s.station != null">{{ s.station }}</td>
+            <td *ngIf="s.dispenser != null">{{ s.dispenser }}</td>
+            <td *ngIf="s.model == null"></td>
+            <td *ngIf="s.code == null"></td>
+            <td *ngIf="s.stationId == null"></td>
+            <td *ngIf="s.station == null"></td>
+            <td *ngIf="s.dispenser == null"></td>
+
+            <td>
+              <img
+                (click)="onedit2(s)"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  background-color: #3d516133;
+                  border-radius: 7px;
+                "
+                src="../../assets/images/edit.png"
+                alt="My Happy SVG"
+              />
+              <img
+                (click)="ondelMachine(s.id)"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  background-color: #ff7f5c33;
+                  margin-left: 20px;
+                  border-radius: 7px;
+                "
+                src="../../assets/images/delete.png"
+                alt="My Happy SVG"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col mt-5">
+        <button
+          class="add"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          style="float: right; margin-right: 155px"
+          mat-raised-button
+        >
+          <i style="margin-bottom: 3px" class="material-icons">add</i> Add New
+        </button>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <img
+                  class="img"
+                  style="width: 40px; height: 30px"
+                  src="../../assets/images/dispenser.png"
+                  alt="My Happy SVG"
+                />
+                <h5
+                  style="
+                    margin-top: 15px;
+                    text-align: left;
+                    font: normal normal bold 12px/14px Montserrat;
+                    letter-spacing: 0.24px;
+                    color: #3d5161;
+                    text-transform: capitalize;
+                    opacity: 1;
+                    margin-left: 10px;
+                  "
+                  class="modal-title"
+                  id="exampleModalLabel"
+                >
+                  Add New Dispenser
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="formVar2" (ngSubmit)="addMachines()">
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Name</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Placeholder ..."
+                          formControlName="name"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Code</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Placeholder ..."
+                          formControlName="code"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="modal-footer">
+                  <button
+                    style="
+                      box-shadow: 0px 3px 6px #00000029;
+                      border-radius: 8px;
+                      opacity: 1;
+                      color: #ff7f5c;
+                      margin-right: 10px;
+                      border-color: #ff7f5c;
+                    "
+                    mat-raised-button
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    (click)="addMachines()"
+                    style="
+                      background: #ff7f5c 0% 0% no-repeat padding-box;
+                      box-shadow: 0px 3px 6px #00000029;
+                      border-radius: 8px;
+                      opacity: 1;
+                      color: #ffffff;
+                    "
+                    mat-raised-button
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="selectedTab == 'compressor'">
+      <div class="col">
+        <button
+          style="
+            float: right;
+            bottom: 60px;
+            right: 160px;
+            text-align: left;
+            font: normal normal medium 14px/18px Montserrat;
+            letter-spacing: 0.28px;
+            color: #3d5161;
+            opacity: 1;
+          "
+          mat-raised-button
+        >
+          Station Filtre <span class="material-icons"> expand_more </span>
+        </button>
+      </div>
+      <table
+        class="table"
+        style="
+          background-color: #ffffff;
+          width: 80%;
+          margin-top: 100px;
+          margin-left: 100px;
+        "
+      >
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Compressor Name</th>
+            <th scope="col">Code</th>
+            <th scope="col">BrokerId</th>
+            <th scope="col">StationId</th>
+            <th scope="col">Station</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of compressors">
+            <td>
+              <span
+                style="
+                  width: 13px;
+                  height: 13px;
+                  color: #ff7f5c;
+                  font-size: 20px;
+                "
+                class="material-icons"
+              >
+                fiber_manual_record
+              </span>
+            </td>
+            <td>{{ s.name }}</td>
+            <td *ngIf="s.code != null">{{ s.code }}</td>
+            <td *ngIf="s.brokerId != null">{{ s.brokerId }}</td>
+            <td *ngIf="s.stationId != null">{{ s.stationId }}</td>
+            <td *ngIf="s.station != null">{{ s.station }}</td>
+            <td *ngIf="s.code == null"></td>
+            <td *ngIf="s.brokerId == null"></td>
+            <td *ngIf="s.stationId == null"></td>
+            <td *ngIf="s.station == null"></td>
+            <td>
+              <img
+                (click)="onedit3(s)"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  background-color: #3d516133;
+                  border-radius: 7px;
+                "
+                src="../../assets/images/edit.png"
+                alt="My Happy SVG"
+              />
+              <img
+                (click)="ondelCompressor(s.id)"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  background-color: #ff7f5c33;
+                  margin-left: 20px;
+                  border-radius: 7px;
+                "
+                src="../../assets/images/delete.png"
+                alt="My Happy SVG"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col mt-5">
+        <button
+          class="add"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          style="float: right; margin-right: 155px"
+          mat-raised-button
+        >
+          <i style="margin-bottom: 3px" class="material-icons">add</i> Add New
+        </button>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <img
+                  class="img"
+                  style="width: 40px; height: 30px"
+                  src="../../assets/images/compressor.png"
+                  alt="My Happy SVG"
+                />
+                <h5
+                  style="
+                    margin-top: 15px;
+                    text-align: left;
+                    font: normal normal bold 12px/14px Montserrat;
+                    letter-spacing: 0.24px;
+                    color: #3d5161;
+                    text-transform: capitalize;
+                    opacity: 1;
+                    margin-left: 10px;
+                  "
+                  class="modal-title"
+                  id="exampleModalLabel"
+                >
+                  Add New Compressor
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="formVar3" (ngSubmit)="addCompressors()">
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Name</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Placeholder ..."
+                          formControlName="name"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Code</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Placeholder ..."
+                          formControlName="code"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"
+                      >BrokerId</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Placeholder ..."
+                      formControlName="brokerId"
+                    />
+                  </div>
+                </form>
+                <div class="modal-footer">
+                  <button
+                    style="
+                      box-shadow: 0px 3px 6px #00000029;
+                      border-radius: 8px;
+                      opacity: 1;
+                      color: #ff7f5c;
+                      margin-right: 10px;
+                      border-color: #ff7f5c;
+                    "
+                    mat-raised-button
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    (click)="addCompressors()"
+                    style="
+                      background: #ff7f5c 0% 0% no-repeat padding-box;
+                      box-shadow: 0px 3px 6px #00000029;
+                      border-radius: 8px;
+                      opacity: 1;
+                      color: #ffffff;
+                    "
+                    mat-raised-button
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="selectedTab == 'nozele'">
+      <div class="col">
+        <button
+          style="
+            float: right;
+            bottom: 60px;
+            right: 160px;
+            text-align: left;
+            font: normal normal medium 14px/18px Montserrat;
+            letter-spacing: 0.28px;
+            color: #3d5161;
+            opacity: 1;
+          "
+          mat-raised-button
+        >
+          Station Filtre <span class="material-icons"> expand_more </span>
+        </button>
+      </div>
+
+      <table
+        class="table"
+        style="
+          background-color: #ffffff;
+          width: 80%;
+          margin-top: 100px;
+          margin-left: 100px;
+        "
+      >
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Dispenser Name</th>
+            <th scope="col">Dispenser_No</th>
+            <th scope="col">MachineId</th>
+            <th scope="col">Machine</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of dispensers">
+            <td>
+              <span
+                style="
+                  width: 13px;
+                  height: 13px;
+                  color: #ff7f5c;
+                  font-size: 20px;
+                "
+                class="material-icons"
+              >
+                fiber_manual_record
+              </span>
+            </td>
+            <td>{{ s.name }}</td>
+            <td *ngIf="s.dispenser_No != null">{{ s.dispenser_No }}</td>
+            <td *ngIf="s.machineId != null">{{ s.machineId }}</td>
+            <td *ngIf="s.machine != null">{{ s.machine }}</td>
+            <td *ngIf="s.name == null"></td>
+            <td *ngIf="s.dispenser_No == null"></td>
+            <td *ngIf="s.machineId == null"></td>
+            <td *ngIf="s.machine == null"></td>
+            <td>
+              <img
+                style="
+                  width: 20px;
+                  height: 20px;
+                  background-color: #3d516133;
+                  border-radius: 7px;
+                "
+                src="../../assets/images/edit.png"
+                alt="My Happy SVG"
+              />
+              <img
+                (click)="ondelDispenser(s.id)"
+                style="
+                  width: 20px;
+                  height: 20px;
+                  background-color: #ff7f5c33;
+                  margin-left: 20px;
+                  border-radius: 7px;
+                "
+                src="../../assets/images/delete.png"
+                alt="My Happy SVG"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col mt-5">
+        <button
+          class="add"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          style="float: right; margin-right: 155px"
+          mat-raised-button
+        >
+          <i style="margin-bottom: 3px" class="material-icons">add</i> Add New
+        </button>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <img
+                  class="img"
+                  style="width: 40px; height: 30px"
+                  src="../../assets/images/nozzle.png"
+                  alt="My Happy SVG"
+                />
+                <h5
+                  style="
+                    margin-top: 15px;
+                    text-align: left;
+                    font: normal normal bold 12px/14px Montserrat;
+                    letter-spacing: 0.24px;
+                    color: #3d5161;
+                    text-transform: capitalize;
+                    opacity: 1;
+                    margin-left: 10px;
+                  "
+                  class="modal-title"
+                  id="exampleModalLabel"
+                >
+                  Add New Nozele
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="formVar4" (ngSubmit)="addDispensers()">
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Name</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Placeholder ..."
+                          formControlName="name"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label"
+                          >Dispenser_No</label
+                        >
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="exampleFormControlInput1"
+                          placeholder="Placeholder ..."
+                          formControlName="dispenser_No"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <div class="modal-footer">
+                  <button
+                    style="
+                      box-shadow: 0px 3px 6px #00000029;
+                      border-radius: 8px;
+                      opacity: 1;
+                      color: #ff7f5c;
+                      margin-right: 10px;
+                      border-color: #ff7f5c;
+                    "
+                    mat-raised-button
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    (click)="addDispensers()"
+                    style="
+                      background: #ff7f5c 0% 0% no-repeat padding-box;
+                      box-shadow: 0px 3px 6px #00000029;
+                      border-radius: 8px;
+                      opacity: 1;
+                      color: #ffffff;
+                    "
+                    mat-raised-button
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="selectedTab == 'user'">
+      <app-control-panel-users></app-control-panel-users>
+    </div>
+    <div *ngIf="selectedTab == 'role'">
+      <app-control-panel-roless></app-control-panel-roless>
+    </div>
+  </div>
+</div>

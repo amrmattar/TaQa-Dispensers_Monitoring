@@ -1,0 +1,58 @@
+<a
+  mat-list-item
+  [ngStyle]="{ 'padding-left': depth * 12 + 'px' }"
+  (click)="onItemSelected(item)"
+  [ngClass]="{
+    active: item.route ? router.isActive(item.route, true) : false,
+    expanded: expanded
+  }"
+  class="menu-list-item mb-1 icon_tooltip"
+>
+  <div class="row justify-content-center">
+    <div class="col">
+      <img style="width: 25px;" [src]="'../../assets/imgs/' + item.photo" />
+    </div>
+  </div>
+  <!-- {{item.displayName}} -->
+  <span fxFlex *ngIf="item.children && item.children.length">
+    <span fxFlex></span>
+    <mat-icon
+      class="rotate-icon"
+      [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'"
+    >
+      expand_more
+    </mat-icon>
+  </span>
+  <span class="icon_tooltiptext">{{item.displayName}}</span>
+</a>
+<!-- <a
+  *ngIf="item.displayName == 'Dashboard'"
+  mat-list-item
+  [ngStyle]="{ 'padding-left': depth * 12 + 'px' }"
+  (click)="onItemSelected(item)"
+  [ngClass]="{
+    active: item.route ? router.isActive(item.route, true) : false,
+    expanded: expanded
+  }"
+  class="menu-list-item mb-1 icon_tooltip"
+>
+  <div class="row justify-content-center">
+    <div class="col">
+      <img style="width: 25px;" [src]="'../../assets/imgs/' + item.photo" />
+    </div>
+  </div>
+  <span fxFlex *ngIf="item.children && item.children.length">
+    <span fxFlex></span>
+    <mat-icon
+      class="rotate-icon"
+      [@indicatorRotate]="expanded ? 'expanded' : 'collapsed'"
+    >
+      expand_more
+    </mat-icon>
+  </span>
+  <span class="icon_tooltiptext">{{item.displayName}}</span>
+</a> -->
+<!-- <div *ngIf="expanded">
+  <app-menu-list-item *ngFor="let child of item.children" [item]="child" [depth]="depth+1">
+  </app-menu-list-item>
+</div> -->

@@ -1,0 +1,769 @@
+<!-- <div class="container-fluid">
+  <div class="row mt-2" style="width: 100%;">
+    <h1 class="text-center">User Alert Settings</h1>
+    </div>
+    <br>
+    <div class="row" style="width: 100%;">
+      <div class="col-3">
+      </div>
+    <div class="col-6">
+      <div class="card shadow mb-5"  style="background-color: #F4DBD4;  border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;">
+        <div class="card-body">
+
+          <br>
+          <form [formGroup]="SettingsForm" (ngSubmit)="getMaxMinRead2()">
+            <div class="row">
+              <div class="form-group col-6">
+                <h3 for="max" class="text-center">Name</h3>
+                <br>
+                <select class="form-select" formControlName="name"  aria-label="Default select example">
+                  <option style="font-size: 16px;" selected>Select Any Pressure or Tempreature</option>
+                  <option style="font-size: 16px;" *ngFor="let te of temp" [value]="te.name">{{te.name}}</option>
+                </select>
+
+            </div>
+            <div class="form-group col-6">
+              <h3 for="max" class="text-center">Type</h3>
+              <br>
+              <select class="form-select" formControlName="type"  aria-label="Default select example">
+                <option style="font-size: 16px;" selected>Select A Type</option>
+                <option style="font-size: 16px;" *ngFor="let te of types" [value]="te.name">{{te.name}}</option>
+              </select>
+          </div>
+            <div class="form-group col-6">
+              <br>
+              <h3 for="thv" class="text-center">Threshold Value</h3>
+              <br>
+              <input style="height: 60px;" formControlName="thv" type="number" class="form-control rounded-pill" aria-label="Sizing example input" placeholder="Threshold Value" aria-describedby="inputGroup-sizing-lg">
+
+          </div>
+          <div class="form-group col-6">
+            <br>
+            <h3 for="thv" class="text-center">Message</h3>
+            <br>
+            <input style="height: 60px;" formControlName="message" class="form-control rounded-pill" aria-label="Sizing example input" placeholder="Alert Message" aria-describedby="inputGroup-sizing-lg">
+
+        </div>
+        <div class="form-group col-3">
+
+      </div>
+      <div class="form-group col-6">
+        <br>
+        <h3 for="thv" class="text-center">Email</h3>
+        <br>
+        <input style="height: 60px;" formControlName="email" class="form-control rounded-pill" aria-label="Sizing example input" placeholder="Email" aria-describedby="inputGroup-sizing-lg">
+
+    </div>
+            </div>
+
+            <br>
+            <div class="row">
+              <div class="col-4">
+
+              </div>
+              <div class="col-1">
+
+              </div>
+              <div class="col-3">
+                <button  type="button" (click)="getMaxMinRead2()"  class="btn btn-lg rounded-pill example-form" style="background-color: rgb(248,156,20); color: white;">
+                  Save
+              </button>
+              </div>
+            </div>
+
+        </form>
+
+
+          </div>
+
+      </div>
+    </div>
+
+    </div>
+</div> -->
+<div class="container-fluid" style="background-color: #f9f5f3">
+  <div class="row" style="background-color: white; padding-left: 2rem">
+    <div class="col-3 mt-3">
+      <div class="row">
+        <div class="col-2">
+          <img src="../../assets/imgs/gas-station-svgrepo-com.svg" />
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col-3 mt-3">
+              <span
+                class="mt-2"
+                style="
+                  text-align: left;
+                  font: normal normal normal 32px/6px Roboto;
+                  letter-spacing: 0px;
+                  color: #3d5161;
+                  opacity: 1;
+                "
+                >{{ allStations.length }}/{{ allStations.length }}
+              </span>
+            </div>
+            <div class="col">
+              <h1
+                class="mt-2"
+                style="
+                  text-align: left;
+                  font: normal normal normal 13px/15px Roboto;
+                  letter-spacing: 0px;
+                  color: #3d5161;
+                  opacity: 1;
+                "
+              >
+                Monitored <br />
+                Stations
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 mt-2"></div>
+    <div class="col-1"></div>
+  </div>
+  <br />
+  <div class="row" style="background-color: white; height: 100px; padding-left: 2rem;padding-right: 2rem;">
+    <div class="col-6 mt-4">
+      <div class="row">
+        <div class="col-1">
+          <img class="mt-2" src="../../assets/imgs/location.svg" alt="" />
+        </div>
+        <div class="col">
+          <select
+            class="form-select form-select-lg mb-3"
+            aria-label=".form-select-lg example"
+          >
+            <option style="font-size: 16px;" selected>City</option>
+            <option style="font-size: 16px;" value="1">Cairo</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 mt-4">
+      <div class="row">
+        <div class="col-1">
+          <img width="40" class="mt-2" src="../../assets/imgs/gas-station-svgrepo-com (1).svg" alt="" />
+        </div>
+        <div class="col">
+          <select
+            (change)="
+              id = $event.target.value;
+              getAllStatus();
+              getLastReadDefault();
+              getLastAllAlarmDefault()
+            "
+            class="form-select form-select-lg mb-3"
+            aria-label=".form-select-lg example"
+          >
+            <option style="font-size: 16px;" selected>All Stations</option>
+            <option style="font-size: 16px;" value="1">Mostord</option>
+            <option style="font-size: 16px;" value="2">Rehab</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-4 mt-4">
+        <div class="row">
+          <div class="col-2">
+            <img src="../../assets/imgs/style_black_48dp.svg" alt="">
+          </div>
+          <div class="col">
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+              <option style="font-size: 16px;" selected value="1">Class</option>
+              <option style="font-size: 16px;"  value="2">Category</option>
+            </select>
+          </div>
+        </div>
+      </div> -->
+  </div>
+  <br />
+  <mat-tab-group
+    mat-stretch-tabs
+    (selectedTabChange)="getLastAllAlarm($event.index + 1)"
+  >
+    <mat-tab label="Alarms">
+      <div class="row"></div>
+      <br />
+      <div class="row">
+        <div class="col-8">
+          <mat-card
+            style="background: #ffffff 0% 0% no-repeat padding-box; opacity: 1"
+          >
+            <div class="row">
+              <div class="col-5">
+                <mat-card-header>
+                  <div class="row">
+                    <div class="col-12 mt-1">
+                      <mat-card-title
+                        style="
+                          text-align: left;
+                          font: normal normal bold 12px/14px Montserrat;
+                          letter-spacing: 1.2px;
+                          color: #3d5161;
+                          text-transform: uppercase;
+                          opacity: 1;
+                        "
+                        >station Details</mat-card-title
+                      >
+                    </div>
+                  </div>
+                </mat-card-header>
+              </div>
+            </div>
+            <mat-card-content>
+              <div>
+                <div class="row justify-content-center">
+                  <div class="col-3">
+                    <circle-progress
+                      *ngIf="allStatus"
+                      [percent]="
+                        (allStatus[1].noState /
+                          (allStatus[1].noState + allStatus[2].noState)) *
+                        100
+                      "
+                      [radius]="50"
+                      [outerStrokeWidth]="10"
+                      [innerStrokeWidth]="0"
+                      [outerStrokeColor]="'#FF7F5C'"
+                      [innerStrokeColor]="'#FF7F5C'"
+                      [animation]="true"
+                      [animationDuration]="300"
+                    ></circle-progress>
+                  </div>
+                  <div class="col-4 mt-5">
+                    <h1
+                      class="text-center"
+                      style="
+                        text-align: center;
+                        font: normal normal bold 21px Montserrat;
+                        letter-spacing: 0px;
+                        margin-left: 1.5rem;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      {{ lastRead.totalWorkingTime }}
+                    </h1>
+                  </div>
+                  <div class="col-4 mt-5">
+                    <h1
+                      class="text-center"
+                      style="
+                        text-align: center;
+                        font: normal normal bold 21px Montserrat;
+                        letter-spacing: 0px;
+                        margin-left: 1.5rem;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      {{ lastRead.totalPowerTime }}
+                    </h1>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="col-4">
+                    <h3
+                      class="ms-5"
+                      style="
+                        font: normal normal bold 15px Montserrat;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      CT/RT (Today)
+                    </h3>
+                  </div>
+                  <div class="col-4">
+                    <h3
+                      class="text-center"
+                      style="
+                        text-align: center;
+                        font: normal normal bold 15px Montserrat;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      Total Working Time
+                    </h3>
+                  </div>
+                  <div class="col-4">
+                    <h3
+                      class="text-center"
+                      style="
+                        text-align: center;
+                        font: normal normal bold 15px Montserrat;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      Total Power On Time
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <br />
+          <div class="row">
+            <mat-card
+              style="
+                background: #ffffff 0% 0% no-repeat padding-box;
+                opacity: 1;
+              "
+            >
+              <div class="row">
+                <div class="col-5">
+                  <mat-card-header>
+                    <div class="row">
+                      <div class="col-12 mt-1">
+                        <mat-card-title
+                          style="
+                            text-align: left;
+                            font: normal normal bold 12px/14px Montserrat;
+                            letter-spacing: 1.2px;
+                            color: #3d5161;
+                            text-transform: uppercase;
+                            opacity: 1;
+                          "
+                          >Alarm Classification</mat-card-title
+                        >
+                      </div>
+                    </div>
+                  </mat-card-header>
+                </div>
+              </div>
+              <mat-card-content>
+                <div *ngIf="pieData != null">
+                  <apx-chart
+                    [series]="barChart2.series"
+                    [chart]="barChart2.chart"
+                    [dataLabels]="barChart2.dataLabels"
+                    [plotOptions]="barChart2.plotOptions"
+                    [yaxis]="barChart2.yaxis"
+                    [xaxis]="barChart2.xaxis"
+                    [legend]="barChart2.legend"
+                    [colors]="barChart2.colors"
+                    [grid]="barChart2.grid"
+                    [title]="barChart2.title"
+                    [tooltip]="barChart2.tooltip"
+                  ></apx-chart>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <div class="col-4">
+          <mat-card
+            style="background: #ffffff 0% 0% no-repeat padding-box; opacity: 1"
+          >
+            <div class="row">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-1">
+                    <span class="material-icons" style="color: red">
+                      fiber_manual_record
+                    </span>
+                  </div>
+                  <div class="col-7">
+                    <h1
+                      style="
+                        text-align: left;
+                        font: normal normal bold 16px/21px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      Alarm
+                    </h1>
+                  </div>
+                  <div class="col-4">
+                    <h1
+                      style="
+                        text-align: left;
+                        font: normal normal bold 14px/19px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d516199;
+                        opacity: 1;
+                      "
+                    >
+                      Total {{ alarms.alarmCounts2 }}
+                    </h1>
+                  </div>
+                </div>
+                <hr />
+              </div>
+            </div>
+            <mat-card-content class="section">
+
+              <div class="row no-gutters" *ngFor="let alarm of alarmReads.compressors">
+                <div class="col-6">
+                  <h1
+                      style="
+                        text-align: left;
+                        font: normal normal bold 14px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      {{ alarm.className }}
+                    </h1>
+                    <h3
+                      style="
+                        text-align: left;
+                        font: normal normal  12px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      {{ getTime(alarm.timeStamp) }}
+                    </h3>
+                </div>
+                <div class="col-6" style="text-align: end;">
+                  <h3
+                      style="
+                        text-align: right;
+                        font: normal normal  12px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      {{ alarm.name }}
+                    </h3>
+                </div>
+                <hr style="margin-top: 2px;">
+              </div>
+              <!-- <div class="row" *ngFor="let alarm of alarmReads.compressors">
+                <div class="row">
+                  <div class="col-8">
+                    <h1
+                      style="
+                        text-align: left;
+                        font: normal normal bold 14px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      {{ alarm.className }}
+                    </h1>
+                  </div>
+                  <div class="col-4">
+                    <h3
+                      style="
+                        text-align: left;
+                        font: normal normal medium 14px/19px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      {{ alarm.name }}
+                    </h3>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-8">
+                    <h3
+                      style="
+                        text-align: left;
+                        font: normal normal medium 12px/16px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      {{ getTime(alarm.timeStamp) }}
+                    </h3>
+                  </div>
+                  <div class="col-4"></div>
+                </div>
+              </div> -->
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Warnings">
+      <div class="row"></div>
+      <br />
+      <div class="row">
+        <div class="col-8">
+          <mat-card
+            style="background: #ffffff 0% 0% no-repeat padding-box; opacity: 1"
+          >
+            <div class="row">
+              <div class="col-5">
+                <div class="row">
+                  <div class="col-12 mt-1">
+                    <mat-card-title
+                      style="
+                        text-align: left;
+                        font: normal normal bold 12px/14px Montserrat;
+                        letter-spacing: 1.2px;
+                        color: #3d5161;
+                        text-transform: uppercase;
+                        opacity: 1;
+                      "
+                      >station Details</mat-card-title
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <mat-card-content>
+              <div>
+                <div class="row justify-content-center">
+                  <div class="col-3">
+                    <circle-progress
+                      *ngIf="allStatus"
+                      [percent]="
+                        (allStatus[1].noState /
+                          (allStatus[1].noState + allStatus[2].noState)) *
+                        100
+                      "
+                      [radius]="50"
+                      [outerStrokeWidth]="10"
+                      [innerStrokeWidth]="0"
+                      [outerStrokeColor]="'#FF7F5C'"
+                      [innerStrokeColor]="'#FF7F5C'"
+                      [animation]="true"
+                      [animationDuration]="300"
+                    ></circle-progress>
+                  </div>
+                  <div class="col-4 mt-5">
+                    <h1
+                      class="text-center"
+                      style="
+                        text-align: center;
+                        font: normal normal bold 21px Montserrat;
+                        letter-spacing: 0px;
+                        margin-left: 1.5rem;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      {{ lastRead.totalWorkingTime }}
+                    </h1>
+                  </div>
+                  <div class="col-4 mt-5">
+                    <h1
+                      class="text-center"
+                      style="
+                        text-align: center;
+                        font: normal normal bold 21px Montserrat;
+                        letter-spacing: 0px;
+                        margin-left: 1.5rem;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      {{ lastRead.totalPowerTime }}
+                    </h1>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="col-4">
+                    <h3
+                      class="ms-5"
+                      style="
+                        font: normal normal bold 15px Montserrat;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      CT/RT (Today)
+                    </h3>
+                  </div>
+                  <div class="col-4">
+                    <h3
+                      class="text-center"
+                      style="
+                        text-align: center;
+                        font: normal normal bold 15px Montserrat;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      Total Working Time
+                    </h3>
+                  </div>
+                  <div class="col-4">
+                    <h3
+                      class="text-center"
+                      style="
+                        text-align: center;
+                        font: normal normal bold 15px Montserrat;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      "
+                    >
+                      Total Power On Time
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <br />
+          <div class="row">
+            <mat-card
+              style="
+                background: #ffffff 0% 0% no-repeat padding-box;
+                opacity: 1;
+              "
+            >
+              <div class="row">
+                <div class="col-5">
+                  <mat-card-header>
+                    <div class="row">
+                      <div class="col-12 mt-1">
+                        <mat-card-title
+                          style="
+                            text-align: left;
+                            font: normal normal bold 12px/14px Montserrat;
+                            letter-spacing: 1.2px;
+                            color: #3d5161;
+                            text-transform: uppercase;
+                            opacity: 1;
+                          "
+                          >Alarm Classification</mat-card-title
+                        >
+                      </div>
+                    </div>
+                  </mat-card-header>
+                </div>
+              </div>
+              <mat-card-content>
+                <div *ngIf="pieData != null">
+                  <apx-chart
+                    [series]="barChart2.series"
+                    [chart]="barChart2.chart"
+                    [dataLabels]="barChart2.dataLabels"
+                    [plotOptions]="barChart2.plotOptions"
+                    [yaxis]="barChart2.yaxis"
+                    [xaxis]="barChart2.xaxis"
+                    [legend]="barChart2.legend"
+                    [colors]="barChart2.colors"
+                    [grid]="barChart2.grid"
+                    [title]="barChart2.title"
+                    [tooltip]="barChart2.tooltip"
+                  ></apx-chart>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <div class="col-4">
+          <mat-card
+            style="background: #ffffff 0% 0% no-repeat padding-box; opacity: 1"
+          >
+            <div class="row">
+              <div class="col-12">
+                <mat-card-header>
+                  <div class="row">
+                    <div class="col-1">
+                      <span class="material-icons" style="color: orange; font-size: .8rem;">
+                        fiber_manual_record
+                      </span>
+                    </div>
+                    <div class="col-5">
+                      <h1
+                        style="
+                          text-align: left;
+                          font: normal normal bold 16px/21px Roboto;
+                          letter-spacing: 0px;
+                          color: #3d5161;
+                          opacity: 1;
+                        "
+                      >
+                        Warnings
+                      </h1>
+                    </div>
+                    <div class="col-5">
+                      <h1
+                        style="
+                          text-align: left;
+                          font: normal normal bold 14px/19px Roboto;
+                          letter-spacing: 0px;
+                          color: #3d516199;
+                          opacity: 1;
+                        "
+                      >
+                        Total 
+                        <!-- {{ alarms.alarmCounts2 }} -->
+                        {{alarmReads.compressors.length}}
+                      </h1>
+                    </div>
+                  </div>
+                </mat-card-header>
+                <hr />
+              </div>
+            </div>
+            <mat-card-content class="section">
+              <div class="row no-gutters" *ngFor="let alarm of alarmReads.compressors">
+                <div class="col-6">
+                  <h1
+                      style="
+                        text-align: left;
+                        font: normal normal bold 12px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                        margin: 0;
+                        margin-bottom: 3px;
+                      "
+                    >
+                      {{ alarm.className }}
+                    </h1>
+                    <h3
+                      style="
+                        text-align: left;
+                        font: normal normal  12px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                        margin: 0;
+                      "
+                    >
+                      {{ getTime(alarm.timeStamp) }}
+                    </h3>
+                </div>
+                <div class="col-6" style="text-align: end;">
+                  <h3
+                      style="
+                        text-align: right;
+                        font: normal normal 13px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                        margin: 0;
+                      "
+                    >
+                      {{ alarm.name }}
+                    </h3>
+                </div>
+                <hr style="margin-top: 2px;">
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

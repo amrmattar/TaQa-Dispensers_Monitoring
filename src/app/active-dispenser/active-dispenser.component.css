@@ -1,0 +1,42 @@
+h1{
+  font: normal normal bold 23px/27px Montserrat;
+}
+h2{
+  font: normal normal bold 20px/25px Montserrat;
+}
+h3{
+  font: normal normal bold 17px/20px Montserrat;
+}
+h4{
+  font: normal normal bold 17px/20px Montserrat;
+}
+.card-header{
+  font: normal normal bold 18px/24px Roboto;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FF7F5C;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #FF7F5C;
+}
+#clock {
+  font-family: 'Orbitron', sans-serif;
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+

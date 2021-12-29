@@ -1,0 +1,2206 @@
+<div class="" style="background-color: #f9f5f3">
+  <div class="mb-1" style="
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 0 0 5rem;
+    ">
+    <div style="display: flex; align-items: baseline; padding: 8px 0 0 0">
+      <img style="width: 2.1rem; display: block; margin-right: 1.5rem"
+        src="../../assets/imgs/gas-station-svgrepo-com (1).svg" alt="" />
+      <p style="
+          font: bold 20px Montserrat;
+          letter-spacing: 2.8px;
+          color: #3d5161;
+        " *ngIf="valueOfStation">
+        {{ valueOfStation.name }}
+      </p>
+    </div>
+    <div type="button" (click)="redirect()" style="
+        background: #ff7f5c 0% 0% no-repeat padding-box;
+        border-radius: 15px 0px 0px 15px;
+        opacity: 1;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding-left: 3rem;
+        padding-right: 3rem;
+      ">
+      <p class="btn mt-2 ms-5" style="
+          font: bold 20px/29px Montserrat;
+          letter-spacing: 2.4px;
+          color: #ffffff;
+          opacity: 1;
+          margin: 0 0 12px;
+        ">
+        Back
+      </p>
+      <span class="material-icons" style="
+          font-size: 40px;
+
+          color: #ffffff;
+          opacity: 1;
+        ">
+        keyboard_arrow_right
+      </span>
+    </div>
+  </div>
+
+  <div class="row mb-1" style="background-color: white; padding-left: 5rem; padding-right: 4rem">
+    <div class="col-3 mt-3">
+      <div class="row">
+        <div class="col-2">
+          <img class="mt-2" width="28px" src="../../assets/imgs/gas-station-svgrepo-com.svg" />
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col-3 mt-3">
+              <span style="
+                  text-align: left;
+                  font: normal normal normal 32px/6px Roboto;
+                  letter-spacing: 0px;
+                  color: #3d5161;
+                  opacity: 1;
+                ">{{ allStations.length }}/{{ allStations.length }}
+              </span>
+            </div>
+            <div class="col">
+              <h1 class="mt-2" style="
+                  text-align: left;
+                  font: normal normal normal 13px/15px Roboto;
+                  letter-spacing: 0px;
+                  color: #3d5161;
+                  opacity: 1;
+                ">
+                Monitored <br />
+                Stations
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4 mt-3">
+      <div class="row" style="
+          background: #f9f5f3 0% 0% no-repeat padding-box;
+          border-radius: 30px;
+          opacity: 1;
+          height: 30px;
+        ">
+        <div *ngIf="shift == 1" class="col-4 rounded-pill" style="
+            background-color: #ff7f5c;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">
+          <h1 type="button" class="mt-3" style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #ffffff;
+              text-transform: uppercase;
+              opacity: 1;
+            " (click)="
+              shift = 1;
+              getStationVlaueTime(1);
+              getAllDispensersTime(1);
+              getAllStationsTime(1);
+              getAllStationsVlaueTime(1);
+              getConsumptionDataTime(1)
+            ">
+            Today
+          </h1>
+        </div>
+        <div *ngIf="shift != 1" class="col-4 rounded-pill" style="
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">
+          <h1 type="button" class="mt-3" style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #3d5161;
+              text-transform: uppercase;
+              opacity: 1;
+            " (click)="
+              shift = 1;
+              getStationVlaueTime(1);
+              getAllDispensersTime(1);
+              getAllStationsTime(1);
+              getAllStationsVlaueTime(1);
+              getConsumptionDataTime(1)
+            ">
+            Today
+          </h1>
+        </div>
+        <div *ngIf="shift == 2" class="col-4 rounded-pill" style="
+            background-color: #ff7f5c;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">
+          <h1 type="button" style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #ffffff;
+              text-transform: uppercase;
+              opacity: 1;
+            " class="rounded-pill text-center mt-3" (click)="
+              shift = 2;
+              getStationVlaueTime(2);
+              getAllDispensersTime(2);
+              getAllStationsTime(2);
+              getAllStationsVlaueTime(2);
+              getConsumptionDataTime(2)
+            ">
+            Yesterday
+          </h1>
+        </div>
+        <div *ngIf="shift != 2" class="col-4 rounded-pill" style="
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">
+          <h1 type="button" style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #3d5161;
+              text-transform: uppercase;
+              opacity: 1;
+            " class="rounded-pill text-center mt-3" (click)="
+              shift = 2;
+              getStationVlaueTime(2);
+              getAllDispensersTime(2);
+              getAllStationsTime(2);
+              getAllStationsVlaueTime(2);
+              getConsumptionDataTime(2)
+            ">
+            Yesterday
+          </h1>
+        </div>
+        <div *ngIf="shift == 3" class="col-4 rounded-pill" style="
+            background-color: #ff7f5c;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">
+          <h1 type="button" style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #ffffff;
+              text-transform: uppercase;
+              opacity: 1;
+            " class="rounded-pill text-center mt-3" (click)="
+              shift = 3;
+              getStationVlaueTime(3);
+              getAllDispensersTime(3);
+              getAllStationsTime(3);
+              getAllStationsVlaueTime(3);
+              getConsumptionDataTime(3)
+            ">
+            Last Week
+          </h1>
+        </div>
+        <div *ngIf="shift != 3" class="col-4 rounded-pill" style="
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          ">
+          <h1 type="button" style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #3d5161;
+              text-transform: uppercase;
+              opacity: 1;
+            " class="rounded-pill text-center mt-3" (click)="
+              shift = 3;
+              getStationVlaueTime(3);
+              getAllDispensersTime(3);
+              getAllStationsTime(3);
+              getAllStationsVlaueTime(3);
+              getConsumptionDataTime(3)
+            ">
+            Last Week
+          </h1>
+        </div>
+
+      </div>
+    </div>
+    <!-- <div class="col-1"></div> -->
+    <div class="col-5">
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-2 mt-3">
+              <span class="material-icons" style="color: #ff7f5c">
+                play_arrow
+              </span>
+            </div>
+            <div class="col-10">
+              <mat-form-field style="width: 100%">
+                <input (dateChange)="fromDate($event)" matInput [ngxMatDatetimePicker]="picker"
+                  placeholder="Start date - time" [formControl]="dateControl" />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker showSeconds="true">
+                </ngx-mat-datetime-picker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-2 mt-3">
+              <span class="material-icons" style="color: #ff7f5c"> stop </span>
+            </div>
+            <div class="col-10">
+              <mat-form-field style="width: 100%">
+                <input (dateChange)="toDate($event)" matInput [ngxMatDatetimePicker]="picker2"
+                  placeholder="End date - time" [formControl]="dateControl2" />
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker2 showSeconds="true">
+                </ngx-mat-datetime-picker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="fake-head-taps row"  *ngIf="show_taps == true">
+    <div class="col-6 text-center" (click)="headtaps('Finance')"
+      [ngStyle]="{ 'border-bottom': flagheadtap === 'Finance' ?  '2px solid #3F51B5': 'none' }">Finance</div>
+    <div class="col-6 text-center" (click)="headtaps('Operation')"
+      [ngStyle]="{ 'border-bottom': flagheadtap === 'Operation' ?  '2px solid #3F51B5': 'none' }">Operation</div>
+  </div>
+  <div class="left" *ngIf="flagheadtap == 'Finance'">
+    <br />
+    <div class="row">
+      <div class="col-8">
+        <div class="container-fluid row justify-content-center">
+          <div class="col-11 col-xl-3">
+            <div class="card mb-2" style="
+                  background: #f4dbd4 0% 0% no-repeat padding-box;
+                  border-radius: 24px;
+                  opacity: 1;
+                ">
+              <div class="card-body">
+                <div class="row">
+                  <h1 class="text-center" style="
+                        text-align: left;
+                        font: normal normal normal 1.4rem Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      " *ngIf="valueOfStation">
+                    {{
+                    (
+                    (valueOfStation.totalConsumption / 0.744) *
+                    pricing
+                    ).toFixed() | number: ""
+                    }}
+                    &nbsp;
+                    <span style="font-size: 1rem">EGP</span>
+                  </h1>
+                </div>
+                <div style="display: flex; align-items: center">
+                  <span class="material-icons" style="margin-right: 0.8rem">
+                    payments
+                  </span>
+                  <p class="text-center" style="
+                        text-align: left;
+                        font: normal normal bold 12px Montserrat;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      ">
+                    Total Value
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-10 col-xl-3">
+            <div class="card mb-2" style="
+                  background: #ffffff 0% 0% no-repeat padding-box;
+                  border-radius: 24px;
+                  opacity: 1;
+                ">
+              <div class="card-body">
+                <div class="row" *ngIf="valueOfStation">
+                  <h2 class="text-center" style="
+                        text-align: left;
+                        font: normal normal normal 1.4rem Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      " *ngIf="valueOfStation.totalConsumption > 0">
+                    {{
+                    (valueOfStation.totalConsumption / 0.744).toFixed()
+                    | number: ""
+                    }}
+                    &nbsp;
+                    <span style="font-size: 1rem">m<sup>3</sup></span>
+                  </h2>
+                  <h2 class="text-center" style="
+                        text-align: left;
+                        font: normal normal normal 40px/53px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      " *ngIf="valueOfStation.totalConsumption <= 0">
+                    Not Monitored
+                  </h2>
+                </div>
+                <div style="display: flex; align-items: center">
+                  <span style="margin-right: 0.8rem" class="material-icons">
+                    local_offer
+                  </span>
+                  <p class="text-muted text-center" style="
+                        text-align: left;
+                        font: normal normal bold 12px Montserrat;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      ">
+                    Total Sales
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-10 col-xl-3">
+            <div class="card mb-2" style="
+                  background: #ffffff 0% 0% no-repeat padding-box;
+                  border-radius: 24px;
+                  opacity: 1;
+                ">
+              <div class="card-body">
+                <div class="row" *ngIf="valueOfStation">
+                  <h2 class="text-center" style="
+                        text-align: left;
+                        font: normal normal normal 1.4rem Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      " *ngIf="valueOfStation.avgConsumption > 0">
+                    {{
+                    (valueOfStation.avgConsumption / 0.744).toFixed()
+                    | number: ""
+                    }}
+                    &nbsp;
+                    <span style="font-size: 1rem">m<sup>3</sup>/trans.</span>
+                  </h2>
+                  <h2 class="text-center" style="
+                        text-align: left;
+                        font: normal normal normal 40px/53px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      " *ngIf="valueOfStation.avgConsumption <= 0">
+                    Not Monitored
+                  </h2>
+                </div>
+                <div style="display: flex; align-items: center">
+                  <span style="margin-right: 0.8rem" class="material-icons">
+                    local_offer
+                  </span>
+                  <p class="text-muted text-center" style="
+                        text-align: left;
+                        font: normal normal bold 10px Montserrat;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      ">
+                    Avg Sales (Today)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-10 col-xl-3">
+            <div class="card mb-2" style="
+                  background: #ffffff 0% 0% no-repeat padding-box;
+                  border-radius: 24px;
+                  opacity: 1;
+                ">
+              <div class="card-body">
+                <div class="row" *ngIf="valueOfStation">
+                  <h2 class="text-center" style="
+                        text-align: left;
+                        font: normal normal normal 1.4rem Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      " *ngIf="valueOfStation.totalVehicle > 0">
+                    {{ valueOfStation.totalVehicle.toFixed() }} &nbsp;
+                  </h2>
+                  <h2 class="text-center" style="
+                        text-align: left;
+                        font: normal normal normal 40px/53px Roboto;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      " *ngIf="valueOfStation.totalVehicle <= 0">
+                    Not Monitored
+                  </h2>
+                </div>
+                <div style="display: flex; align-items: center">
+                  <span style="margin-right: 0.2rem" class="material-icons">
+                    sync_alt
+                  </span>
+                  <p class="text-muted text-center" style="
+                        text-align: left;
+                        font: normal normal bold 10px Montserrat;
+                        letter-spacing: 0px;
+                        color: #3d5161;
+                        opacity: 1;
+                      ">
+                    Total Transaction Count
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid row justify-content-center">
+          <mat-card class="example-card p-2 mb-1 bg-white rounded" style="
+                background: #ffffff 0% 0% no-repeat padding-box;
+                opacity: 1;
+              ">
+            <div class="row">
+              <div class="col-6">
+                <mat-card-header class="mt-4">
+                  <mat-card-subtitle style="
+                        text-align: left;
+                        font: normal normal bold 12px/14px Montserrat;
+                        letter-spacing: 1.2px;
+                        color: #3d5161;
+                        text-transform: uppercase;
+                        opacity: 1;
+                      ">Stations Activates Overview</mat-card-subtitle>
+                </mat-card-header>
+              </div>
+              <div class="col-12">
+                <mat-tab-group mat-stretch-tabs (selectedTabChange)="changeTab($event)">
+                  <mat-tab label="Station">
+                    <mat-card class="example-card p-2 mb-1 bg-white rounded" style="
+                background: #ffffff 0% 0% no-repeat padding-box;
+                opacity: 1;
+              ">
+                      <div class="row">
+                        <div class="col-6">
+                          <mat-card-header class="mt-4">
+                            <mat-card-subtitle style="
+                        text-align: left;
+                        font: normal normal bold 12px/14px Montserrat;
+                        letter-spacing: 1.2px;
+                        color: #3d5161;
+                        text-transform: uppercase;
+                        opacity: 1;
+                      ">Stations Activates Overview</mat-card-subtitle>
+                          </mat-card-header>
+                        </div>
+                        <div class="col-6">
+                          <mat-tab-group mat-stretch-tabs (selectedTabChange)="changeTab($event)">
+                            <mat-tab label="Sales"> </mat-tab>
+                            <mat-tab label="Transaction"> </mat-tab>
+                            <mat-tab label="Value"> </mat-tab>
+                          </mat-tab-group>
+                        </div>
+                      </div>
+                      <mat-card-content>
+                        <div id="chart" *ngIf="
+                    outChartRender == false &&
+                    oilChartRender == false &&
+                    data != null
+                  ">
+                          <apx-chart [series]="outChart.series" [chart]="outChart.chart" [xaxis]="outChart.xaxis"
+                            [yaxis]="outChart.yaxis" [stroke]="outChart.stroke" [tooltip]="outChart.tooltip"
+                            [dataLabels]="outChart.dataLabels"></apx-chart>
+                        </div>
+                        <div id="chart" *ngIf="
+                    inChartRender == false &&
+                    oilChartRender == false &&
+                    outChartRender == true
+                  ">
+                          <apx-chart [series]="inChart.series" [chart]="inChart.chart" [xaxis]="inChart.xaxis"
+                            [yaxis]="inChart.yaxis" [stroke]="inChart.stroke" [tooltip]="inChart.tooltip"
+                            [dataLabels]="inChart.dataLabels"></apx-chart>
+                        </div>
+                        <div id="chart" *ngIf="
+                    inChartRender == false &&
+                    oilChartRender == true &&
+                    outChartRender == false
+                  ">
+                          <apx-chart [series]="oilChart.series" [chart]="oilChart.chart" [xaxis]="oilChart.xaxis"
+                            [yaxis]="oilChart.yaxis" [stroke]="oilChart.stroke" [tooltip]="oilChart.tooltip"
+                            [dataLabels]="oilChart.dataLabels"></apx-chart>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+                  </mat-tab>
+                  <mat-tab label="Dispensers & Nozzles">
+                    <mat-card class="example-card p-2 mb-1 bg-white rounded" style="
+                background: #ffffff 0% 0% no-repeat padding-box;
+                opacity: 1;
+              ">
+                      <div class="row">
+                        <div class="col-6">
+                          <mat-card-header class="mt-4">
+                            <mat-card-subtitle style="
+                        text-align: left;
+                        font: normal normal bold 12px/14px Montserrat;
+                        letter-spacing: 1.2px;
+                        color: #3d5161;
+                        text-transform: uppercase;
+                        opacity: 1;
+                      ">Stations Activates Overview</mat-card-subtitle>
+                          </mat-card-header>
+                        </div>
+                        <div class="col-6">
+                          <mat-tab-group mat-stretch-tabs (selectedTabChange)="changeTab($event)">
+                            <mat-tab label="Sales"> </mat-tab>
+                            <mat-tab label="Transaction"> </mat-tab>
+                            <mat-tab label="Value"> </mat-tab>
+                          </mat-tab-group>
+                        </div>
+                      </div>
+                      <mat-card-content>
+                        <div id="chart" *ngIf="
+                    outChartRender == false &&
+                    oilChartRender == false &&
+                    data != null
+                  ">
+                          <apx-chart [series]="consuChart.series" [chart]="consuChart.chart" [xaxis]="consuChart.xaxis"
+                            [yaxis]="consuChart.yaxis" [stroke]="consuChart.stroke" [tooltip]="consuChart.tooltip"
+                            [dataLabels]="consuChart.dataLabels"></apx-chart>
+                        </div>
+                        <div id="chart" *ngIf="
+                    inChartRender == false &&
+                    oilChartRender == false &&
+                    outChartRender == true
+                  ">
+                          <apx-chart [series]="transChart.series" [chart]="transChart.chart" [xaxis]="transChart.xaxis"
+                            [yaxis]="transChart.yaxis" [stroke]="transChart.stroke" [tooltip]="transChart.tooltip"
+                            [dataLabels]="transChart.dataLabels"></apx-chart>
+                        </div>
+                        <div id="chart" *ngIf="
+                    inChartRender == false &&
+                    oilChartRender == true &&
+                    outChartRender == false
+                  ">
+                          <apx-chart [series]="valueChart.series" [chart]="valueChart.chart" [xaxis]="valueChart.xaxis"
+                            [yaxis]="valueChart.yaxis" [stroke]="valueChart.stroke" [tooltip]="valueChart.tooltip"
+                            [dataLabels]="valueChart.dataLabels"></apx-chart>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+                  </mat-tab>
+
+                </mat-tab-group>
+              </div>
+            </div>
+            <mat-card-content>
+
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="row">
+          <h1 class="text-center" style="font-size: 1rem; font-weight: 500">
+            Hourly Sale
+          </h1>
+          <div id="chart" *ngIf="vehicleData != null">
+            <apx-chart [series]="hourlyChart.series" [chart]="hourlyChart.chart" [xaxis]="hourlyChart.xaxis"
+              [stroke]="hourlyChart.stroke" [colors]="hourlyChart.colors" [dataLabels]="hourlyChart.dataLabels"
+              [tooltip]="hourlyChart.tooltip" [plotOptions]="hourlyChart.plotOptions" [markers]="hourlyChart.markers"
+              [yaxis]="hourlyChart.yaxis" [fill]="hourlyChart.fill" [legend]="hourlyChart.legend"></apx-chart>
+          </div>
+        </div>
+        <h1 class="text-center" style="font-size: 1rem; font-weight: 500; margin-bottom:.5rem">
+          Dispenser Sales
+        </h1>
+        <div class="row" *ngFor="let dispenser of allDispensers.machinesDTO">
+          <div class="col-4">
+            <h3 style="font-size: 1rem;" class="text-center" *ngIf="dispenser">
+              {{ dispenser.machineId }}
+            </h3>
+          </div>
+          <div class="col-8">
+            <h3 class="text-center" *ngIf="
+                  dispenser.dtOs[0].totalConsumptionToday > 0 ||
+                  dispenser.dtOs[1].totalConsumptionToday > 0
+                " style="font-size: 1rem;">
+              {{
+              (
+              dispenser.dtOs[0].totalConsumptionToday / 0.744 +
+              dispenser.dtOs[1].totalConsumptionToday / 0.744
+              ).toFixed()
+              }}
+              - m <sup>3</sup>
+            </h3>
+            <h3 class="text-center" *ngIf="
+                  dispenser.dtOs[0].totalConsumptionToday <= 0 &&
+                  dispenser.dtOs[1].totalConsumptionToday <= 0
+                ">
+              Not Monitored
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <mat-card style="
+            background: transparent 0% 0% no-repeat padding-box;
+            opacity: 1;
+          ">
+        <div class="row">
+          <div class="col-5">
+            <mat-card-header>
+              <div class="row">
+                <div class="col-12 mt-4">
+                  <mat-card-title style="
+                        text-align: left;
+                        font: normal normal bold 12px/14px Montserrat;
+                        letter-spacing: 1.2px;
+                        color: #3d5161;
+                        text-transform: uppercase;
+                        opacity: 1;
+                      ">station Details</mat-card-title>
+                </div>
+              </div>
+            </mat-card-header>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <mat-card-content class="section2">
+
+
+<div class="row " *ngFor="let dispenser of allDispensers.machinesDTO">
+  <div style="width: 220px;"></div>
+  <div class="col-4 row despenser-total-card shadow" style="height: 200px;" *ngFor="let dis of dispenser.dtOs" >
+    <div class=" title-despenser">
+      <img  src="../../assets/imgs/fuel.svg" class="gas-img"/>
+      <span>{{ dispenser.machineId }}-{{dis.dispenser_No}}</span>
+    </div>
+    <div class="col-6 text-center" >
+      <span class="dispenser-number" *ngIf="dis.totalConsumptionToday > 0">
+        {{(dis.totalConsumptionToday / 0.744).toFixed() | number: ""}} m<sup>3</sup>
+      </span>
+      <h3 *ngIf="dis.totalConsumptionToday <= 0">
+        Not Monitored
+      </h3>
+      <span class="dispenser-parameter">Total Sales</span>
+    </div>
+    <div class="col-6 text-center" >
+      <span class="dispenser-number" *ngIf="dis.totalVehicel > 0">{{ dis.totalVehicel }}</span>
+      <h3 *ngIf="dis.totalVehicel <= 0">
+        Not Monitored
+      </h3>
+      <span class="dispenser-parameter">Total Transaction Count</span>
+    </div>
+    <div class="col-12 text-center" >
+      <span class="dispenser-number" *ngIf="dis.totalConsumptionToday > 0">
+        {{((dis.totalConsumptionToday / 0.744) *3.5).toFixed() | number: ""}} EGP
+      </span>
+      <h3 *ngIf="dis.totalConsumptionToday <= 0">
+        Not Monitored
+      </h3>
+      <span class="dispenser-parameter">Total Value</span>
+    </div>
+  </div>
+</div>
+
+              <!-- <div class="row">
+                <div class="col-4" *ngFor="let dispenser of allDispensers.machinesDTO">
+                    <div *ngFor="let dis of dispenser.dtOs" >
+
+                          <div class="row">
+                            <div class="col-3">
+                              <img style="width: 70px" src="../../assets/imgs/gas.svg" />
+                            </div>
+                            <div class="col mt-3">
+                              <h1>
+                                {{ dispenser.machineId }}-{{dis.dispenser_No}}
+                              </h1>
+                            </div>
+                          </div>
+                      <div class="row ">
+                        <h3>Total Sales</h3>
+                          <h3 *ngIf="dis.totalConsumptionToday > 0">
+                            {{(dis.totalConsumptionToday / 0.744).toFixed() | number: ""}}m <sup>3</sup>
+                          </h3>
+                          <h3 *ngIf="dis.totalConsumptionToday <= 0">
+                            Not Monitored
+                          </h3>
+                      </div>
+                      <br />
+                      <div class="row ms-4">
+                        <h3>Total Transaction Count</h3>
+                        <div class="col-10">
+                          <h3 *ngIf="dis.totalVehicel > 0">
+                            {{ dis.totalVehicel }}
+                          </h3>
+                          <h3 *ngIf="dis.totalVehicel <= 0">
+                            Not Monitored
+                          </h3>
+                        </div>
+                      </div>
+                      <br />
+                      <div class="row ms-4">
+                        <h3>Total Value</h3>
+                        <div class="col-10">
+                          <h3 *ngIf="dis.totalConsumptionToday > 0">
+                            {{
+                            (
+                            (dis.totalConsumptionToday / 0.744) *
+                            pricing
+                            ).toFixed() | number: ""
+                            }}
+                            EGP
+                            {{((dis.totalConsumptionToday / 0.744) *3.5).toFixed() | number: ""}}EGP
+                          </h3>
+                          <h3 *ngIf="dis.totalConsumptionToday <= 0">
+                            Not Monitored
+                          </h3>
+                        </div>
+                      </div>
+                      <br /><br /><br /><br /><br />
+                    </div>
+                  </div>
+                </div> -->
+
+        </mat-card-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </mat-card>
+    </div>
+  </div>
+  <div class="right" *ngIf="flagheadtap == 'Operation'">
+    <br />
+    <div class=" row mx-3">
+      <div class="col-12">
+        <div class="row " style="padding-left: 0px; padding-right: 0px;">
+          <div class="col-4 border" style="margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-right: 0px;">
+            <div class="state_com">
+              <img width="20px" src="../../assets/imgs/air-compressor-svgrepo-com(1).svg" alt="" />
+              <span>Compressor Status</span>
+            </div>
+          </div>
+          <div class="col-4 border row alarm" style="margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-right: 0px;">
+            <div class="col-6">
+              <div class="">
+                <span class="material-icons ico" style="color: red">
+                  fiber_manual_record
+                </span>
+                <span>ALARM</span>
+              </div>
+            </div>
+            <div class="col-6 row">
+              <div class="col-3"></div>
+              <div class="col-4">TOTAL</div>
+              <div class="col-4">{{valueOfStation.alarmCounts}}</div>
+            </div>
+
+          </div>
+          <div class="col-4 border row warn" style="margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-right: 0px;">
+            <div class="col-6">
+              <div class="">
+                <span class="material-icons ico" style="color: #f7b801">
+                  fiber_manual_record
+                </span>
+                <span>WARNING</span>
+              </div>
+            </div>
+            <div class="col-6 row">
+              <div class="col-3"></div>
+              <div class="col-4">TOTAL</div>
+              <div class="col-4">{{valueOfStation.warningCounts}}</div>
+            </div>
+
+          </div>
+        </div>
+        <br>
+
+        <div class="row gauge-container">
+          <div class="gauge-container-header row">
+            <div class="col-3">
+              <p class="text-center station-Details">
+                station Details
+              </p>
+            </div>
+            <div class="col-9 row inner-taps">
+              <div class="col-4" (click)="innertaps('Pressure')"
+                [ngStyle]="{ 'border-bottom': flaginnertap === 'Pressure' ?  '2px solid #3F51B5': 'none' }">
+                <p class="text-center">
+                  Pressure
+                </p>
+              </div>
+              <div class="col-4" (click)="innertaps('Temperature')"
+                [ngStyle]="{ 'border-bottom': flaginnertap === 'Temperature' ?  '2px solid #3F51B5': 'none' }">
+                <p class="text-center">
+                  Temperature
+                </p>
+              </div>
+              <div class="col-4" (click)="innertaps('KPI')"
+                [ngStyle]="{ 'border-bottom': flaginnertap === 'KPI' ?  '2px solid #3F51B5': 'none' }">
+                <p class="text-center">
+                  KPI
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="gauge-container-content " >
+            <div class="row" *ngIf="flaginnertap == 'Pressure'">
+              <!-- <div class="col-3" *ngFor="let meter of meters; let i = index" >
+                <div class="" style="height: 20px;"></div>
+                <ejs-circulargauge height="250" style='display:block; '
+                  id='range-container{{i}}' #circulargauge='' title='{{meter.name}}' [titleStyle]='titleStyle'>
+                  <e-axes>
+                    <e-axis minimum={{meter.minMeterValue}} radius='80%' maximum={{meter.maxMeterValue}} startAngle=260 endAngle=100 [majorTicks]='majorTicks'
+                      [labelStyle]='labelStyle' [lineStyle]='lineStyle' [minorTicks]='minorTicks'
+                      [annotations]='meter.annotaions' [ranges]='meter.ranges' [pointers]='meter.pointers'>
+                    </e-axis>
+                  </e-axes>
+                </ejs-circulargauge>
+                <div id='template'>
+                  <div class='sliderwrap'>
+                    <div id='default'></div>
+                  </div>
+                </div>
+
+
+                <script id='pointerValue' type="text/x-template">
+                <div id='sliderwrap'>
+                  <div class='des'>
+                      <div id='default'></div>
+                  </div>
+                </div>
+                </script>
+              </div> -->
+              <div class="row no-gutters">
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      inP.series[0].data[0].value >= minDisplayedValue &&
+                      inP.series[0].data[0].value <= maxDisplayedValue
+                    "
+                    [options]="inP"
+                    (chartInit)="onChartInitIn($event)"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModal"
+                  >
+                    Inlet Pressure
+                  </h3>
+                </div>
+
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Inlet Pressure
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].maxInP / 14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].globalMaxInP /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      oilP.series[0].data[0].value >= minDisplayedValue &&
+                      oilP.series[0].data[0].value <= maxDisplayedValue
+                    "
+                    [options]="oilP"
+                    (chartInit)="onChartInitOil($event)"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModal2"
+                  >
+                    Oil Pressure
+                  </h3>
+                </div>
+
+                <div
+                  class="modal fade"
+                  id="exampleModal2"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Oil Pressure
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].maxOilP / 14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].globalMaxOilP /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      s1P.series[0].data[0].value >= minDisplayedValue &&
+                      s1P.series[0].data[0].value <= maxDisplayedValue
+                    "
+                    [options]="s1P"
+                    (chartInit)="onChartInitS1($event)"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModal3"
+                  >
+                    Stage1 Pressure
+                  </h3>
+                </div>
+
+                <div
+                  class="modal fade"
+                  id="exampleModal3"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Stage1 Pressure
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].maxStage1P /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].globalMaxStage1P /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      s2P.series[0].data[0].value >= minDisplayedValue &&
+                      s2P.series[0].data[0].value <= maxDisplayedValue
+                    "
+                    [options]="s2P"
+                    (chartInit)="onChartInitS2($event)"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModal4"
+                  >
+                    Stage2 Pressure
+                  </h3>
+                </div>
+
+                <div
+                  class="modal fade"
+                  id="exampleModal4"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Stage2 Pressure
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].maxStage2P /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].globalMaxStage2P /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      s3P.series[0].data[0].value >= minDisplayedValue &&
+                      s3P.series[0].data[0].value <= maxDisplayedValue
+                    "
+                    [options]="s3P"
+                    (chartInit)="onChartInitS3($event)"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModal5"
+                  >
+                    Stage3 Pressure
+                  </h3>
+                </div>
+
+                <div
+                  class="modal fade"
+                  id="exampleModal5"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Stage3 Pressure
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].maxStage3P /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].globalMaxStage3P /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      s4P.series[0].data[0].value >= minDisplayedValue &&
+                      s4P.series[0].data[0].value <= maxDisplayedValue
+                    "
+                    [options]="s4P"
+                    (chartInit)="onChartInitS4($event)"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModal6"
+                  >
+                    Stage4 Pressure
+                  </h3>
+                </div>
+
+                <div
+                  class="modal fade"
+                  id="exampleModal6"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Stage4 Pressure
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].maxStage4P /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].globalMaxStage4P /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      s5P.series[0].data[0].value >= minDisplayedValue &&
+                      s5P.series[0].data[0].value <= maxDisplayedValue
+                    "
+                    [options]="s5P"
+                    (chartInit)="onChartInitS5($event)"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModal7"
+                  >
+                    Stage5 Pressure
+                  </h3>
+                </div>
+
+                <div
+                  class="modal fade"
+                  id="exampleModal7"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Stage5 Pressure
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].maxStage5P /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                (
+                                  maxMinRead.pressures[0].globalMaxStage5P /
+                                  14.5038
+                                ).toFixed()
+                              }}
+                              Bar
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div></div>
+            <div class="row" *ngIf="flaginnertap == 'Temperature'" >
+              <div class="col-3" *ngFor="let meter of metersT; let i = index" >
+                <div class="" style="height: 20px;"></div>
+                <ejs-circulargauge height="250" style='display:block; '
+                  id='range-container{{i}}' #circulargauge='' title='{{meter.name}}' [titleStyle]='titleStyle'>
+                  <e-axes>
+                    <e-axis minimum={{meter.minMeterValue}} radius='80%' maximum={{meter.maxMeterValue}} startAngle=260 endAngle=100 [majorTicks]='majorTicks'
+                      [labelStyle]='labelStyle' [lineStyle]='lineStyle' [minorTicks]='minorTicks'
+                      [annotations]='meter.annotaions' [ranges]='meter.ranges' [pointers]='meter.pointers'>
+                    </e-axis>
+                  </e-axes>
+                </ejs-circulargauge>
+                <div id='template'>
+                  <div class='sliderwrap'>
+                    <div id='default'></div>
+                  </div>
+                </div>
+
+
+                <script id='pointerValue' type="text/x-template">
+                <div id='sliderwrap'>
+                  <div class='des'>
+                      <div id='default'></div>
+                  </div>
+                </div>
+                </script>
+              </div>
+
+              <!-- <div class="row">
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      outT.series[0].data[0].value >= minDisplayedValue2 &&
+                      outT.series[0].data[0].value <= maxDisplayedValue2
+                    "
+                    [options]="outT"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModalT"
+                  >
+                    Discharge Temperature
+                  </h3>
+                </div>
+                <div
+                  class="modal fade"
+                  id="exampleModalT"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Discharge Temperature
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{ maxMinRead.temps[0].maxOutT.toFixed() }} F
+                              <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                maxMinRead.temps[0].globalMaxOutT.toFixed()
+                              }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      oilT.series[0].data[0].value >= minDisplayedValue2 &&
+                      oilT.series[0].data[0].value <= maxDisplayedValue2
+                    "
+                    [options]="oilT"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModalT2"
+                  >
+                    Oil Temperature
+                  </h3>
+                </div>
+                <div
+                  class="modal fade"
+                  id="exampleModalT2"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Oil Temperature
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{ maxMinRead.temps[0].maxOilT.toFixed() }} F
+                              <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                maxMinRead.temps[0].globalMaxOilT.toFixed()
+                              }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      s1T.series[0].data[0].value >= minDisplayedValue2 &&
+                      s1T.series[0].data[0].value <= maxDisplayedValue2
+                    "
+                    [options]="s1T"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModalT3"
+                  >
+                    Stage1 Temperature
+                  </h3>
+                </div>
+                <div
+                  class="modal fade"
+                  id="exampleModalT3"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Stage1 Temperature
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{ maxMinRead.temps[0].maxStage1T.toFixed() }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                maxMinRead.temps[0].globalMaxStage1T.toFixed()
+                              }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      s2T.series[0].data[0].value >= minDisplayedValue2 &&
+                      s2T.series[0].data[0].value <= maxDisplayedValue2
+                    "
+                    [options]="s2T"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModalT4"
+                  >
+                    Stage2 Temperature
+                  </h3>
+                </div>
+                <div
+                  class="modal fade"
+                  id="exampleModalT4"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Stage2 Temperature
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{ maxMinRead.temps[0].maxStage2T.toFixed() }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                maxMinRead.temps[0].globalMaxStage2T.toFixed()
+                              }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      s3T.series[0].data[0].value >= minDisplayedValue2 &&
+                      s3T.series[0].data[0].value <= maxDisplayedValue2
+                    "
+                    [options]="s3T"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModalT5"
+                  >
+                    Stage3 Temperature
+                  </h3>
+                </div>
+                <div
+                  class="modal fade"
+                  id="exampleModalT5"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Stage3 Temperature
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{ maxMinRead.temps[0].maxStage3T.toFixed() }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                maxMinRead.temps[0].globalMaxStage3T.toFixed()
+                              }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      s4T.series[0].data[0].value >= minDisplayedValue2 &&
+                      s4T.series[0].data[0].value <= maxDisplayedValue2
+                    "
+                    [options]="s4T"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModalT6"
+                  >
+                    Stage4 Temperature
+                  </h3>
+                </div>
+                <div
+                  class="modal fade"
+                  id="exampleModalT6"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Stage4 Temperature
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{ maxMinRead.temps[0].maxStage4T.toFixed() }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                maxMinRead.temps[0].globalMaxStage4T.toFixed()
+                              }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div
+                    style="height: 250px"
+                    echarts
+                    *ngIf="
+                      s5T.series[0].data[0].value >= minDisplayedValue2 &&
+                      s5T.series[0].data[0].value <= maxDisplayedValue2
+                    "
+                    [options]="s5T"
+                    class="demo-chart"
+                  ></div>
+                  <h3
+                    class="text-center"
+                    type="button"
+                    data-bs-toggle="modal"
+                    style="font-size: 1rem"
+                    data-bs-target="#exampleModalT7"
+                  >
+                    Stage5 Temperature
+                  </h3>
+                </div>
+                <div
+                  class="modal fade"
+                  id="exampleModalT7"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel">
+                          Max Stage5 Temperature
+                        </h2>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{ maxMinRead.temps[0].maxStage5T.toFixed() }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Max Today</h3>
+                          </div>
+                          <div class="col">
+                            <h2 class="text-center" *ngIf="maxMinRead">
+                              {{
+                                maxMinRead.temps[0].globalMaxStage5T.toFixed()
+                              }}
+                              F <sup>o</sup>
+                            </h2>
+                            <br />
+                            <h3 class="text-center">Global Max</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+             </div>
+
+            <div class="row" *ngIf="flaginnertap == 'KPI'">
+              <div class="row justify-content-center">
+                <div class="col-3" style="margin-top: 3rem;">
+                  <circle-progress
+                    *ngIf="allStatus"
+                    [percent]="
+                      (allStatus[1].noState /
+                        (allStatus[1].noState + allStatus[2].noState)) *
+                      100
+                    "
+                    [radius]="50"
+                    [outerStrokeWidth]="10"
+                    [innerStrokeWidth]="0"
+                    [outerStrokeColor]="'#FF7F5C'"
+                    [innerStrokeColor]="'#FF7F5C'"
+                    [animation]="true"
+                    [animationDuration]="300"
+                  ></circle-progress>
+                </div>
+                <div class="col-3 mt-5">
+                  <h1
+                    class="text-center"
+                    style="
+                      text-align: center;
+                      font: normal normal bold 28px/33px Montserrat;
+                      letter-spacing: 0px;
+                      color: #3d5161;
+                      opacity: 1;
+                    "
+                  >
+                    {{ lastRead.totalWorkingTime }}
+                  </h1>
+                </div>
+                <div class="col-3 mt-5">
+                  <h1
+                    class="text-center"
+                    style="
+                      text-align: center;
+                      font: normal normal bold 28px/33px Montserrat;
+                      letter-spacing: 0px;
+                      color: #3d5161;
+                      opacity: 1;
+                    "
+                  >
+                    {{ lastRead.totalPowerTime }}
+                  </h1>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-3">
+                  <h3
+                    class="ms-3"
+                    style="
+                      font: normal normal bold 17px Montserrat;
+                      letter-spacing: 0px;
+                      color: #3d5161;
+                      opacity: 1;
+                    "
+                  >
+                    CT/RT (Today)
+                  </h3>
+                </div>
+                <div class="col-3">
+                  <h3
+                    class="text-center"
+                    style="
+                      text-align: center;
+                      font: normal normal bold 17px Montserrat;
+                      letter-spacing: 0px;
+                      color: #3d5161;
+                      opacity: 1;
+                    "
+                  >
+                    Total Working <br> Time (Hour)
+                  </h3>
+
+                </div>
+                <div class="col-3">
+                  <h3
+                    class="text-center"
+                    style="
+                      text-align: center;
+                      font: normal normal bold 17px Montserrat;
+                      letter-spacing: 0px;
+                      color: #3d5161;
+                      opacity: 1;
+                    "
+                  >
+                    Total Power <br> On Time (Hour)
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <mat-card style="
+              background: #ffffff 0% 0% no-repeat padding-box;
+              opacity: 1;
+            ">
+            <div class="row">
+              <div class="col-5">
+                <mat-card-header>
+                  <div class="row">
+                    <div class="col-12 mt-4">
+                      <mat-card-title style="
+                          text-align: left;
+                          font: normal normal bold 12px/14px Montserrat;
+                          letter-spacing: 1.2px;
+                          color: #3d5161;
+                          text-transform: uppercase;
+                          opacity: 1;
+                        ">station Details</mat-card-title>
+                    </div>
+                  </div>
+                </mat-card-header>
+              </div>
+              <div class="col-7">
+                <mat-tab-group mat-stretch-tabs (selectedTabChange)="changeTab3($event)">
+                  <!-- <mat-tab label="Consumption"> </mat-tab> -->
+                  <mat-tab label="Compressor STATUS"> </mat-tab>
+                  <mat-tab label="Dispenser DETAILS"> </mat-tab>
+                </mat-tab-group>
+              </div>
+            </div>
+            <mat-card-content class="section2">
+              <div *ngIf="
+                  compressorRender == true &&
+                  dispRender == false &&
+                  hourlyStateData != null
+                ">
+                <div class="row">
+                  <div class="col-8">
+                    <apx-chart [series]="hourlyStateChart.series" [chart]="hourlyStateChart.chart"
+                      [xaxis]="hourlyStateChart.xaxis" [stroke]="hourlyStateChart.stroke"
+                      [markers]="hourlyStateChart.markers" [fill]="hourlyStateChart.fill"
+                      [title]="hourlyStateChart.title"></apx-chart>
+                  </div>
+                  <div class="col-4">
+                    <apx-chart [series]="barChart.series" [chart]="barChart.chart" [dataLabels]="barChart.dataLabels"
+                      [plotOptions]="barChart.plotOptions" [yaxis]="barChart.yaxis" [xaxis]="barChart.xaxis"
+                      [legend]="barChart.legend" [colors]="barChart.colors" [grid]="barChart.grid"
+                      [title]="barChart.title" [tooltip]="barChart.tooltip"></apx-chart>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="compressorRender == false && dispRender == true">
+
+<div class="row " *ngFor="let dispenser of allDispensers.machinesDTO">
+  <div style="width: 220px;"></div>
+  <div class="col-4 row despenser-total-card shadow" style="height: 200px;" *ngFor="let dis of dispenser.dtOs" >
+    <div class=" title-despenser">
+      <img  src="../../assets/imgs/fuel.svg" class="gas-img"/>
+      <span>{{ dispenser.machineId }}-{{dis.dispenser_No}}</span>
+    </div>
+    <div class="col-6 text-center" >
+      <span class="dispenser-number" *ngIf="dis.totalConsumptionToday > 0">
+        {{(dis.totalConsumptionToday / 0.744).toFixed() | number: ""}} m<sup>3</sup>
+      </span>
+      <h3 *ngIf="dis.totalConsumptionToday <= 0">
+        Not Monitored
+      </h3>
+      <span class="dispenser-parameter">Total Sales</span>
+    </div>
+    <div class="col-6 text-center" >
+      <span class="dispenser-number" *ngIf="dis.totalVehicel > 0">{{ dis.totalVehicel }}</span>
+      <h3 *ngIf="dis.totalVehicel <= 0">
+        Not Monitored
+      </h3>
+      <span class="dispenser-parameter">Total Transaction Count</span>
+    </div>
+    <div class="col-12 text-center" >
+      <span class="dispenser-number" *ngIf="dis.totalConsumptionToday > 0">
+        {{((dis.totalConsumptionToday / 0.744) *3.5).toFixed() | number: ""}} EGP
+      </span>
+      <h3 *ngIf="dis.totalConsumptionToday <= 0">
+        Not Monitored
+      </h3>
+      <span class="dispenser-parameter">Total Value</span>
+    </div>
+  </div>
+</div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <!-- <div class="col-4" style="padding-left: 2rem;">
+
+        <br />
+
+        <br />
+
+      </div> -->
+    </div>
+  </div>
+
+</div>

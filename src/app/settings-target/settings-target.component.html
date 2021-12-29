@@ -1,0 +1,67 @@
+<div class="row mt-2">
+    <h1 class="text-center">Settings</h1>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-3">
+      </div>
+    <div class="col-6">
+      <div class="card shadow mb-5"  style="background-color: #F4DBD4;  border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;">
+        <div class="card-body">
+          <form [formGroup]="SettingsForm" >
+            <div class="row">
+              <div class="form-group col-6">
+                <h3 for="max" class="text-center">Sales Target</h3>
+                <br>
+                <input style="height: 60px;" type="number" formControlName="max" class="form-control rounded-pill" aria-label="Sizing example input"  placeholder="Sales Target" aria-describedby="inputGroup-sizing-lg">
+    
+            </div>
+            <div class="form-group col-6">
+              <h3 for="max" class="text-center">Transactions Target</h3>
+              <br>
+              <input style="height: 60px;" type="number" formControlName="min" class="form-control rounded-pill" aria-label="Sizing example input"  placeholder="Transactions Target" aria-describedby="inputGroup-sizing-lg">
+    
+          </div>
+            <div class="form-group col-6">
+              <h3 for="thv" class="text-center">Value Target</h3>
+              <br>
+              <input style="height: 60px;" formControlName="thv" type="number" class="form-control rounded-pill" aria-label="Sizing example input" placeholder="Value Target" aria-describedby="inputGroup-sizing-lg">
+    
+          </div>
+          <div class="form-group col-6">
+            <h3 for="thv" class="text-center">Value Rate</h3>
+            <br>
+            <input style="height: 60px;" formControlName="wv" type="number" class="form-control rounded-pill" aria-label="Sizing example input" placeholder="Value Rate" aria-describedby="inputGroup-sizing-lg">
+    
+        </div>
+            </div>
+    
+            <br>
+            <div class="row">
+              <div class="col-4">
+    
+              </div>
+              <div class="col-2">
+                <button  type="button" (click)="redirect()"  class="btn btn-lg rounded-pill example-form" style="background-color: rgb(248,156,20); color: white;">
+                  <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+                  Home
+              </button>
+              </div>
+              <div class="col-3">
+                <button  type="button"  class="btn btn-lg rounded-pill example-form" style="background-color: rgb(248,156,20); color: white;">
+                  <!-- <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span> -->
+                  Save
+              </button>
+              </div>
+            </div>
+    
+        </form>
+    
+    
+          </div>
+    
+      </div>
+    </div>
+    
+    </div>
+    

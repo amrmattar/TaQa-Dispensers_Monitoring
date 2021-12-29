@@ -1,0 +1,435 @@
+
+      <div class="list-chart-container">
+        <div class="container row">
+                <div class="col-9"></div>
+                <div class="col-3">
+                  <div class="col-12 mt-2">
+                    <div
+                      class="row"
+                      style="
+                        background: white 0% 0% no-repeat padding-box;
+                        border-radius: 30px;
+                        opacity: 1;
+                        height: 30px;
+                      "
+                    >
+                      <div
+                        *ngIf="graph == 1"
+                        class="col-6 rounded-pill"
+                        style="
+                          background-color: #ff7f5c;
+                          height: 30px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                        "
+                      >
+                        <h1
+                          type="button"
+                          class="rounded-pill text-center mt-3"
+                          style="
+                            font: normal normal bold 11px Montserrat;
+                            letter-spacing: 1.4px;
+                            color: #ffffff;
+                            text-transform: uppercase;
+                            opacity: 1;
+                          "
+                          (click)="graph = 1"
+                        >
+                          Graph
+                        </h1>
+                      </div>
+                      <div
+                        *ngIf="graph != 1"
+                        class="col-6 rounded-pill"
+                        style="
+                          height: 30px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                        "
+                      >
+                        <h1
+                          type="button"
+                          class="rounded-pill text-center mt-3"
+                          style="
+                            font: normal normal bold 11px Montserrat;
+                            letter-spacing: 1.4px;
+                            color: #3d5161;
+                            text-transform: uppercase;
+                            opacity: 1;
+                          "
+                          (click)="graph = 1"
+                        >
+                          Graph
+                        </h1>
+                      </div>
+                      <div
+                        *ngIf="graph == 2"
+                        class="col-6 rounded-pill"
+                        style="
+                          background-color: #ff7f5c;
+                          height: 30px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                        "
+                      >
+                        <h1
+                          type="button"
+                          style="
+                            font: normal normal bold 11px Montserrat;
+                            letter-spacing: 1.4px;
+                            color: #ffffff;
+                            text-transform: uppercase;
+                            opacity: 1;
+                          "
+                          class="rounded-pill text-center mt-3"
+                          (click)="graph = 2"
+                        >
+                          List
+                        </h1>
+                      </div>
+                      <div
+                        *ngIf="graph != 2"
+                        class="col-6 rounded-pill"
+                        style="
+                          height: 30px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                        "
+                      >
+                        <h1
+                          type="button"
+                          style="
+                            font: normal normal bold 11px Montserrat;
+                            letter-spacing: 1.4px;
+                            color: #3d5161;
+                            text-transform: uppercase;
+                            opacity: 1;
+                          "
+                          class="rounded-pill text-center mt-3"
+                          (click)="graph = 2"
+                        >
+                          List
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <div *ngIf="graph == 1" class="container row">
+                <div class="col-12">
+                  <mat-card class="example-card p-3 mb-5 bg-white rounded">
+                    <div class="row">
+                      <div class="col-6">
+                        <mat-card-header class="mt-4">
+                          <mat-card-subtitle
+                            style="
+                              text-align: left;
+                              font: normal normal bold 12px Montserrat;
+                              letter-spacing: 1.2px;
+                              color: #3d5161;
+                              text-transform: uppercase;
+                              opacity: 1;
+                            "
+                            >Stations Activates Overview</mat-card-subtitle
+                          >
+                        </mat-card-header>
+                      </div>
+                      <div class="col-6">
+                        <mat-tab-group
+                          mat-stretch-tabs
+                          (selectedTabChange)="changeTab($event)"
+                        >
+                          <mat-tab label="Sales"> </mat-tab>
+                          <mat-tab label="Transaction"> </mat-tab>
+                          <mat-tab label="Value"> </mat-tab>
+                        </mat-tab-group>
+                      </div>
+                    </div>
+                    <mat-card-content>
+                      <div
+                        id="chart"
+                        *ngIf="
+                          salesRender == true &&
+                          salesData != null &&
+                          trasnactionRender == false &&
+                          valueRender == false
+                        "
+                      >
+                        <apx-chart
+                          [series]="salesChart.series"
+                          [chart]="salesChart.chart"
+                          [dataLabels]="salesChart.dataLabels"
+                          [plotOptions]="salesChart.plotOptions"
+                          [yaxis]="salesChart.yaxis"
+                          [xaxis]="salesChart.xaxis"
+                          [legend]="salesChart.legend"
+                          [colors]="salesChart.colors"
+                          [grid]="salesChart.grid"
+                          [tooltip]="salesChart.tooltip"
+                        ></apx-chart>
+                      </div>
+                      <div
+                        id="chart"
+                        *ngIf="
+                          salesRender == false &&
+                          trasnactionData != null &&
+                          trasnactionRender == true &&
+                          valueRender == false
+                        "
+                      >
+                        <apx-chart
+                          [series]="trasnactionChart.series"
+                          [chart]="trasnactionChart.chart"
+                          [dataLabels]="trasnactionChart.dataLabels"
+                          [plotOptions]="trasnactionChart.plotOptions"
+                          [yaxis]="trasnactionChart.yaxis"
+                          [xaxis]="trasnactionChart.xaxis"
+                          [legend]="trasnactionChart.legend"
+                          [colors]="trasnactionChart.colors"
+                          [grid]="trasnactionChart.grid"
+                          [tooltip]="trasnactionChart.tooltip"
+                        ></apx-chart>
+                      </div>
+                      <div
+                        id="chart"
+                        *ngIf="
+                          salesRender == false &&
+                          valueData != null &&
+                          trasnactionRender == false &&
+                          valueRender == true
+                        "
+                      >
+                        <apx-chart
+                          [series]="valueChart.series"
+                          [chart]="valueChart.chart"
+                          [dataLabels]="valueChart.dataLabels"
+                          [plotOptions]="valueChart.plotOptions"
+                          [yaxis]="valueChart.yaxis"
+                          [xaxis]="valueChart.xaxis"
+                          [legend]="valueChart.legend"
+                          [colors]="valueChart.colors"
+                          [grid]="valueChart.grid"
+                          [tooltip]="valueChart.tooltip"
+                        ></apx-chart>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+              <div
+                *ngIf="graph == 2"
+                class="container row justify-content-center"
+              >
+                <div
+                  class="card  mb-3"
+                  *ngFor="let station of allStations"
+                  style="background: #ffffff 0% 0% no-repeat padding-box; opacity: 1"
+                >
+                  <div class="card-header" style="background-color: transparent">
+                    <div class="col-4">
+                      <div class="row">
+                        <div class="col-1" *ngIf="station.networkState == 'Online'">
+                          <span
+                            class="material-icons"
+                            style="margin-top: 15px; color: #ff7f5c; font-size: 13px"
+                          >
+                            fiber_manual_record
+                          </span>
+                        </div>
+                        <div class="col-1" *ngIf="station.networkState == 'Offline'">
+                          <span
+                            class="material-icons"
+                            style="margin-top: 15px; color: #b9cde2; font-size: 13px"
+                          >
+                            fiber_manual_record
+                          </span>
+                        </div>
+                        <div class="col-3" *ngIf="station.networkState == 'Online'">
+                          <img
+                            src="../../assets/imgs/gas-station-svgrepo-com (2).svg"
+                            alt=""
+                            style="width: 35px"
+                          />
+                        </div>
+                        <div class="col-3" *ngIf="station.networkState == 'Offline'">
+                          <img
+                            src="../../assets/imgs/gas-station-svgrepo-com (3).svg"
+                            alt=""
+                            style="width: 35px"
+                          />
+                        </div>
+                        <div class="col mt-2">
+                          <h1
+                            (click)="redirect(station.id)"
+                            style="
+                              text-align: left;
+                              font: normal normal bold 0.9rem Montserrat;
+                              letter-spacing: 1.8px;
+                              color: #3d5161;
+                              text-transform: uppercase;
+                              opacity: 1;
+                              cursor: pointer;
+                            "
+                            class="hover"
+                          >
+                            {{ station.name }}
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding: 1rem 1rem 0 1rem !important;">
+                    <div class="row justify-content-center">
+                      <div class="col-4">
+                        <div class="row justify-content-around">
+                          <div
+                            style="font: 600 9px Montserrat"
+                            class="col-6"
+                          >
+                            Total Sales
+                          </div>
+                          <div class="col-6" *ngIf="allStations">
+                            <h2
+                              style="
+                                text-align: center;
+                                font: 500 10.5px Montserrat;
+                                letter-spacing: 0px;
+                                color: #3d5161;
+                                opacity: 1;
+                              "
+                            >
+                              {{
+                                (station.totalConsumption / 0.744).toFixed()
+                                  | number: ""
+                              }}
+                              - m <sup>3</sup>
+                            </h2>
+                          </div>
+                        </div>
+                        <br />
+                        <div class="row justify-content-around">
+                          <div
+                            class="col-6"
+                            style="font: 600 9px Montserrat"
+                          >
+                            Total Value
+                          </div>
+                          <div class="col-6" *ngIf="allStations">
+                            <h2
+                              style="
+                                text-align: center;
+                                font: 500 10.5px Montserrat;
+                                letter-spacing: 0px;
+                                color: #3d5161;
+                                opacity: 1;
+                              "
+                            >
+                              {{
+                                ((station.totalConsumption / 0.744) * 3.5).toFixed()
+                                  | number: ""
+                              }}
+                              - EGP
+                            </h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="row justify-content-around">
+                          <div
+                            class="col-6"
+                            style="font: 600 9px Montserrat"
+                          >
+                            Total Transaction Count
+                          </div>
+                          <div class="col-6" *ngIf="allStations">
+                            <h2
+                              style="
+                                text-align: center;
+                                font: 500 10.5px Montserrat;
+                                letter-spacing: 0px;
+                                color: #3d5161;
+                                opacity: 1;
+                              "
+                            >
+                              {{ station.totalFlow.toFixed() }}
+                            </h2>
+                          </div>
+                        </div>
+                        <br />
+                        <div class="row justify-content-around">
+                          <div
+                            class="col-6"
+                            style="font: 600 9px Montserrat"
+                          >
+                            Compressor Status
+                          </div>
+                          <div class="col-6" style="color: grey; font-weight: bold">
+                            <h2
+                              style="
+                                text-align: center;
+                                font: 500 10.5px Montserrat;
+                                letter-spacing: 0px;
+                                color: #3d5161;
+                                opacity: 1;
+                              "
+                            >
+                              {{ station.state }}
+                            </h2>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="row justify-content-around">
+                          <div
+                            class="col-6"
+                            style="font: 600 9px Montserrat"
+                          >
+                            Max Transaction Count Per Hour
+                          </div>
+                          <div class="col-6" *ngIf="allStations">
+                            <h2
+                              style="
+                                text-align: center;
+                                font: 500 10.5px Montserrat;
+                                letter-spacing: 0px;
+                                color: #3d5161;
+                                opacity: 1;
+                              "
+                            >
+                              {{ station.maxFlow.toFixed() }}
+                            </h2>
+                          </div>
+                        </div>
+                        <br />
+                        <div class="row justify-content-around">
+                          <div
+                            class="col-6"
+                            style="font: 600 9px Montserrat"
+                          >
+                            Max Transaction Count Date-Time
+                          </div>
+                          <div class="col-6" *ngIf="allStations">
+                            <h2
+                              style="
+                                text-align: center;
+                                font: 500 10.5px Montserrat;
+                                letter-spacing: 0px;
+                                color: #3d5161;
+                                opacity: 1;
+                              "
+                            >
+                              {{ DateChange(station.timeStamp) }}
+                            </h2>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </div>

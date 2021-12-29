@@ -1,0 +1,726 @@
+<!-- <div class="container-fluid bg-white">
+
+  <div class="row justify-content-around  " >
+    <div class="col-6">
+      <p class="text-center">
+        Control Room
+      </p>
+      <p class="text-center">
+        Current View (Today)
+      </p>
+    </div>
+  </div>
+</div>
+<div class=" row" style="background-color: white;">
+<div class=" col-6" *ngFor="let station of allStations">
+
+<div class=" container row justify-content-center" >
+<div class="col-12" >
+    <div class="card mb-5"  style="background-color: transparent; border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;">
+    <div  class="card-header text-center row">
+      <div class="col-6">
+        <img style="width:60px; opacity: 0.5;"  src="../../assets/imgs/local_gas_station_black_24dp.svg"/>
+    </div>
+      <div class="col-3">
+        <div  style="background-color: transparent;" class="mt-3" (click)="redirect(station.id)">{{station.name}} STATION</div>
+      </div>
+
+    </div>
+      <div class="card-body">
+
+          <div class="row justify-content-center">
+
+            <div class="col-6">
+                <div class="row justify-content-around">
+                    <div class="col-6">Total Sales</div>
+                    <div class="col-6 text-muted" *ngIf="allStations">{{(station.totalConsumption/0.744).toFixed() | number:''}} - m <sup>3</sup></div>
+                    <div class="col">
+                    <br>
+                    <div class="progress" style="height: 10px;">
+                      <div class="progress-bar bg-primary" *ngIf="(station.totalConsumption/0.744)*100/settings.salesTarget <= 25" role="progressbar" [style.width]="widthNow((station.totalConsumption/0.744)*100/settings.salesTarget)+'%'" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar bg-warning" *ngIf="(station.totalConsumption/0.744)*100/settings.salesTarget >= 25 && (station.totalConsumption/0.744)*100/settings.salesTarget <= 65 " role="progressbar" [style.width]="widthNow((station.totalConsumption/0.744)*100/settings.salesTarget)+'%'" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar bg-sucess" *ngIf="(station.totalConsumption/0.744)*100/settings.salesTarget >= 65" role="progressbar" [style.width]="widthNow((station.totalConsumption/0.744)*100/settings.salesTarget)+'%'" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                  </div>
+                  <br>
+                  <div class="row justify-content-around">
+                      <div class="col-6">Total Transaction Count </div>
+                      <div class="col-6 text-muted"*ngIf="allStations">{{station.totalFlow.toFixed()}}</div>
+                      <div class="col">
+                      <br>
+                      <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-primary" *ngIf="(station.totalFlow)*100/settings.transactionTarget <= 25" role="progressbar" [style.width]="widthNow((station.totalFlow)*100/settings.transactionTarget)+'%'" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-warning" *ngIf="(station.totalFlow)*100/settings.transactionTarget >= 25 && (station.totalFlow)*100/settings.transactionTarget <= 65 " role="progressbar" [style.width]="widthNow((station.totalFlow)*100/settings.transactionTarget)+'%'" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bg-sucess" *ngIf="(station.totalFlow)*100/settings.transactionTarget >= 65" role="progressbar" [style.width]="widthNow((station.totalFlow)*100/settings.transactionTarget)+'%'" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+                    </div>
+                    <br>
+                      <div class="row justify-content-around">
+                        <div class="col-6">Total Value</div>
+                        <div class="col-6 text-muted"*ngIf="allStations">{{((station.totalConsumption/0.744) * 3.5).toFixed() | number:''}} - EGP</div>
+                        <div class="col">
+                        <br>
+                        <div class="progress" style="height: 10px;">
+                          <div class="progress-bar bg-primary" *ngIf="((station.totalConsumption/0.744) * settings.valueRate)*100/settings.valueTarget <= 25" role="progressbar" [style.width]="widthNow(((station.totalConsumption/0.744) * settings.valueRate)*100/settings.valueTarget)+'%'" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-warning" *ngIf="((station.totalConsumption/0.744) * settings.valueRate)*100/settings.valueTarget >= 25 && ((station.totalConsumption/0.744) * settings.valueRate)*100/settings.valueTarget <= 65 " role="progressbar" [style.width]="widthNow(((station.totalConsumption/0.744) * settings.valueRate)*100/settings.valueTarget)+'%'" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                          <div class="progress-bar bg-sucess" *ngIf="((station.totalConsumption/0.744) * settings.valueRate)*100/settings.valueTarget >= 65" role="progressbar" [style.width]="widthNow(((station.totalConsumption/0.744) * settings.valueRate)*100/settings.valueTarget)+'%'" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                      </div>
+
+
+              </div>
+              <div class="col-6">
+
+                      <div class="row justify-content-around">
+                        <div class="col-6">Compressor Status</div>
+                        <div class="col-6 " style="color: grey; font-weight:bold;">{{station.state}}</div>
+                      </div>
+                      <br>
+                      <div class="row justify-content-around">
+                        <div class="col-6" type="button"  data-bs-toggle="modal" (click)="getAllStationsDefaultId(station.id)" data-bs-target="#exampleModal2"><u style="color: blue;">Network Status</u></div>
+                        <div class="col-6 " style="color: grey; font-weight:bold;">{{station.networkState}}</div>
+                      </div>
+                      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" >
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h2 class="modal-title" id="exampleModalLabel">Status Profile</h2>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" >
+                                <div class="col-12">
+                                  <div id="chart" *ngIf="vehicleData !=null">
+                                    <apx-chart
+                                    [series]="inChart.series"
+                                    [chart]="inChart.chart"
+                                    [xaxis]="inChart.xaxis"
+                                    [yaxis]="inChart.yaxis"
+                                    [stroke]="inChart.stroke"
+                                    [tooltip]="inChart.tooltip"
+                                    [dataLabels]="inChart.dataLabels"
+                                    [title] = "inChart.title"
+                                  ></apx-chart>
+
+                                  </div>
+                                </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row justify-content-around">
+                        <div class="col-6" type="button" (click)="redirect2(station.id)"> <u style="color: blue;">Alarm Counts</u> </div>
+                        <div class="col-6 " style="color: grey; font-weight:bold;">{{station.alarmCounts}}</div>
+                      </div>
+                      <br>
+                      <div class="row justify-content-around">
+                        <div class="col-6" type="button" (click)="redirect2(station.id)"> <u style="color: blue;">Warning Counts</u> </div>
+                        <div class="col-6 " style="color: grey; font-weight:bold;">{{station.warningCounts}}</div>
+                      </div>
+                      <br>
+                      <div class="row justify-content-around">
+                        <div class="col-6" type="button" (click)="redirect(station.id)"> <u style="color: blue;">No of Current Active Dispensers</u> </div>
+                        <div class="col-6 " style="color: grey; font-weight:bold;">{{station.noActiveDispenser}}</div>
+                      </div>
+              </div>
+
+          </div>
+
+          </div>
+      </div>
+</div>
+
+</div>
+</div>
+</div> -->
+<div class="container-fluid" style="background-color: #f9f5f3">
+  <div class="row" style="background-color: white; padding-bottom: 1rem">
+    <div class="col-1"></div>
+    <div class="col-3 mt-2">
+      <div class="row">
+        <div class="col-2">
+          <img src="../../assets/imgs/gas-station-svgrepo-com.svg" />
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col-3 mt-3">
+              <span
+                class="mt-2"
+                style="
+                  text-align: left;
+                  font: normal normal normal 32px/6px Roboto;
+                  letter-spacing: 0px;
+                  color: #3d5161;
+                  opacity: 1;
+                "
+                >{{ allStations.length }}/{{ allStations.length }}
+              </span>
+            </div>
+            <div class="col">
+              <p
+                class="mt-1"
+                style="
+                  text-align: left;
+                  font: normal normal normal 13px/15px Roboto;
+                  letter-spacing: 0px;
+                  color: #3d5161;
+                  opacity: 1;
+                "
+              >
+                Monitored <br />
+                Stations
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 mt-3 px-5">
+      <div
+        class="row"
+        style="
+          background: #f9f5f3 0% 0% no-repeat padding-box;
+          border-radius: 30px;
+          opacity: 1;
+          height: 30px;
+        "
+      >
+        <div
+          *ngIf="shift == 1"
+          class="col-6 rounded-pill"
+          style="
+            background-color: #ff7f5c;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <h1
+            type="button"
+            class="mt-3"
+            style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #ffffff;
+              text-transform: uppercase;
+              opacity: 1;
+            "
+            (click)="
+              shift = 1;
+              getLastReadtime(1);
+              getAllStationsVlaueTime(1);
+              getConsumptionDataTime(1);
+              getAllStationsTime(1)
+            "
+          >
+            Map View
+          </h1>
+        </div>
+        <div
+          *ngIf="shift != 1"
+          class="col-6 rounded-pill"
+          style="
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <h1
+            type="button"
+            class="mt-3"
+            style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #3d5161;
+              text-transform: uppercase;
+              opacity: 1;
+            "
+            (click)="
+              shift = 1;
+              getLastReadtime(1);
+              getAllStationsVlaueTime(1);
+              getConsumptionDataTime(1);
+              getAllStationsTime(1)
+            "
+          >
+            Map View
+          </h1>
+        </div>
+
+        <div
+          *ngIf="shift == 2"
+          class="col-6 rounded-pill"
+          style="
+            background-color: #ff7f5c;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <h1
+            type="button"
+            style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #ffffff;
+              text-transform: uppercase;
+              opacity: 1;
+            "
+            class="rounded-pill text-center mt-3"
+            (click)="
+              shift = 2;
+              getLastReadtime(2);
+              getAllStationsVlaueTime(2);
+              getConsumptionDataTime(2);
+              getAllStationsTime(2)
+            "
+          >
+            List View
+          </h1>
+        </div>
+        <div
+          *ngIf="shift != 2"
+          class="col-6 rounded-pill"
+          style="
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <h1
+            type="button"
+            style="
+              font: normal normal bold 12px Montserrat;
+              letter-spacing: 1.4px;
+              color: #3d5161;
+              text-transform: uppercase;
+              opacity: 1;
+            "
+            class="rounded-pill text-center mt-3"
+            (click)="
+              shift = 2;
+              getLastReadtime(2);
+              getAllStationsVlaueTime(2);
+              getConsumptionDataTime(2);
+              getAllStationsTime(2)
+            "
+          >
+            List View
+          </h1>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-4 mt-2"> -->
+    <!-- <div class="btn-group rounded-pill" (change)="log($event.target.value)"  role="group2" aria-label="Basic radio toggle button group">
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off"  >
+      <label class="btn btn-outline-warning" style="color: grey;" for="btnradio3">Map View</label>
+
+      <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+      <label class="btn btn-outline-warning" style="color: grey;" for="btnradio4">List View</label>
+</div> -->
+    <!-- </div> -->
+    <div class="col-4 mt-3" >
+      <h2 style="font-size: .9rem; font-weight: 500;text-align: end;">
+        Date: &nbsp; {{ getTime(valuesOfStation.to) }} ,
+        <span id="clock"></span>
+      </h2>
+    </div>
+  </div>
+  <br />
+  <br />
+
+  <div *ngIf="shift === 1" style=" margin-top: -2.3rem;margin-left: -.8rem;">
+    <iframe style="height:84vh;width:100vw;" src="http://20.71.116.162/mapview.html" frameborder="0"></iframe>
+  </div>
+
+  <div style="padding-right: 5rem" *ngIf="shift === 2">
+    <div class="row">
+      <div class="col-7">
+        <!-- <div class="row">
+        <div class="col-2">
+          <p style="text-align: left;
+          font: normal normal normal 18px/21px Montserrat;
+          letter-spacing: 0px;
+          color: #3D5161;
+          opacity: 1;"><span class="material-icons">
+            filter_list
+            </span> Filter:</p>
+        </div>
+        <div class="col-3">
+          <select class="form-select" aria-label="Default select example">
+            <option selected value="1">Classes</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="col-3">
+          <select class="form-select" aria-label="Default select example">
+            <option selected value="1">Location</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+      </div> -->
+      </div>
+      <div class="col-5">
+        <div class="row">
+          <div class="col-3" style="display: flex; align-items: center">
+            <span class="material-icons" style="margin-right: 5px"> sort </span>
+            <p
+              style="
+                text-align: left;
+                font: normal normal normal 15px Montserrat;
+                letter-spacing: 0px;
+                color: #3d5161;
+                opacity: 1;
+              "
+            >
+              Sort by:
+            </p>
+          </div>
+          <div class="col-3">
+            <p
+              type="button"
+              class="hov"
+              style="
+                text-align: left;
+                font: normal normal bold 15px Montserrat;
+                letter-spacing: 0px;
+                color: #3d5161;
+                text-transform: uppercase;
+                opacity: 1;
+              "
+              *ngIf="acc != null"
+              (click)="sortArr(allStations, 1); acc = null;"
+            >
+              Alarm
+            </p>
+            <p
+              type="button"
+              class="hov"
+              style="
+                text-align: left;
+                font: normal normal bold 15px Montserrat;
+                letter-spacing: 0px;
+                color: #3d5161;
+                text-transform: uppercase;
+                opacity: 1;
+              "
+              *ngIf="acc == null"
+              (click)="sortArr(allStations, 1); acc = 0;"
+            >
+              Alarm
+            </p>
+          </div>
+          <div class="col-3">
+            <p
+              type="button"
+              class="hov"
+              style="
+                text-align: left;
+                font: normal normal bold 15px Montserrat;
+                letter-spacing: 0px;
+                color: #3d5161;
+                text-transform: uppercase;
+                opacity: 1;
+              "
+              *ngIf="war == null"
+              (click)="sortArr(allStations, 2); war=0"
+            >
+              Warning
+            </p>
+            <p
+              type="button"
+              class="hov"
+              style="
+                text-align: left;
+                font: normal normal bold 15px Montserrat;
+                letter-spacing: 0px;
+                color: #3d5161;
+                text-transform: uppercase;
+                opacity: 1;
+              "
+              *ngIf="war != null"
+              (click)="sortArr(allStations, 2);war=null"
+            >
+              Warning
+            </p>
+          </div>
+          <div class="col-3">
+            <p
+              type="button"
+              class="hov"
+              style="
+                text-align: left;
+                font: normal normal bold 15px Montserrat;
+                letter-spacing: 0px;
+                color: #3d5161;
+                text-transform: uppercase;
+                opacity: 1;
+              "
+              *ngIf="dis == null"
+              (click)="sortArr(allStations, 3); dis=0;"
+            >
+              Dispenser
+            </p>
+            <p
+              type="button"
+              class="hov"
+              style="
+                text-align: left;
+                font: normal normal bold 15px Montserrat;
+                letter-spacing: 0px;
+                color: #3d5161;
+                text-transform: uppercase;
+                opacity: 1;
+              "
+              *ngIf="dis != null"
+              (click)="sortArr(allStations, 3);dis=null;"
+            >
+              Dispenser
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div style="padding: 0 5rem" *ngIf="shift === 2">
+    <div class="row" *ngFor="let station of allStations">
+      <div
+        class="card mb-3"
+        style="
+          background: #ffffff 0% 0% no-repeat padding-box;
+          border-radius: 16px;
+          opacity: 1;
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+        "
+      >
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <div class="col-4">
+              <div class="row">
+                <div class="col-1" *ngIf="station.networkState == 'Online' && station.alarmCounts >0">
+                  <span
+                    class="material-icons"
+                    style="margin-top: 20px; color: #ff7f5c; font-size: 1rem"
+                  >
+                    fiber_manual_record
+                  </span>
+                </div>
+                <div class="col-1" *ngIf="station.networkState == 'Offline'">
+                  <span
+                    class="material-icons"
+                    style="margin-top: 20px; color: #b9cde2; font-size: 1rem"
+                  >
+                    fiber_manual_record
+                  </span>
+                </div>
+                <div class="col-1" *ngIf="station.networkState == 'Online' && station.alarmCounts == 0">
+                  <span
+                    class="material-icons"
+                    style="margin-top: 20px; color: rgb(8, 187, 8); font-size: 1rem"
+                  >
+                    fiber_manual_record
+                  </span>
+                </div>
+                <div class="col-2" *ngIf="station.networkState == 'Online' && station.alarmCounts >0">
+                  <img
+                    src="../../assets/imgs/gas-station-svgrepo-com (2).svg"
+                    alt=""
+                    width="45px"
+                  />
+                </div>
+                <div class="col-2" *ngIf="station.networkState == 'Offline'">
+                  <img
+                    src="../../assets/imgs/gas-station-svgrepo-com (3).svg"
+                    alt=""
+                    width="45px"
+                  />
+                </div>
+                <div class="col-2" *ngIf="station.networkState == 'Online' && station.alarmCounts == 0">
+                  <img
+                    src="../../assets/imgs/gas-station-svgrepo-com (2).svg"
+                    alt=""
+                    width="45px"
+                  />
+                </div>
+                <div class="col-6 mt-3">
+                  <p
+                    style="
+                      text-align: left;
+                      font: normal normal bold 15px Montserrat;
+                      letter-spacing: 1.2px;
+                      color: #3d5161;
+                      text-transform: uppercase;
+                      opacity: 1;
+                    "
+                    type="button"
+                    (click)="redirect(station.id)"
+                  >
+                    {{ station.name }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-8">
+              <div class="row">
+                <div class="col-3">
+                  <p
+                    style="
+                      text-align: left;
+                      font: normal normal bold 15px Montserrat;
+                      letter-spacing: 0px;
+                      color: #3d5161;
+                      opacity: 1;
+                    "
+                  >
+                    {{ station.state }}
+                  </p>
+                  <p
+                    style="
+                      text-align: left;
+                      font: normal normal bold 12px Montserrat;
+                      letter-spacing: 0px;
+                      color: #3d5161;
+                      opacity: 1;
+                    "
+                  >
+                    Compressor State
+                  </p>
+                </div>
+                <div class="col-3">
+                  <div class="row">
+                    <div class="col-3 mt-2">
+                      <img
+                        width="25px"
+                        src="../../assets/imgs/marker.svg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="col">
+                      <p
+                        style="
+                          text-align: left;
+                          font: normal normal bold 15px Montserrat;
+                          letter-spacing: 2.8px;
+                          color: #3d5161;
+                          text-transform: uppercase;
+                          opacity: 1;
+                        "
+                      >
+                        {{ station.alarmCounts | number: "" }}
+                      </p>
+                      <p
+                        style="
+                          text-align: left;
+                          font: normal normal bold 12px Montserrat;
+                          letter-spacing: 0px;
+                          color: #3d5161;
+                          text-transform: capitalize;
+                          opacity: 1;
+                        "
+                      >
+                        Alarm Count
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="row">
+                    <div class="col-3 mt-2">
+                      <span class="material-icons" style="color: #f7b801">
+                        fiber_manual_record
+                      </span>
+                    </div>
+                    <div class="col">
+                      <p
+                        style="
+                          text-align: left;
+                          font: normal normal bold 15px Montserrat;
+                          letter-spacing: 2.8px;
+                          color: #3d5161;
+                          text-transform: uppercase;
+                          opacity: 1;
+                        "
+                      >
+                        {{ station.warningCounts | number: "" }}
+                      </p>
+                      <p
+                        style="
+                          text-align: left;
+                          font: normal normal bold 12px Montserrat;
+                          letter-spacing: 0px;
+                          color: #3d5161;
+                          text-transform: capitalize;
+                          opacity: 1;
+                        "
+                      >
+                        Warning Count
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="row">
+                    <div class="col-3">
+                      <img
+                        width="35px"
+                        src="../../assets/imgs/Group 477.svg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="col-9">
+                      <p
+                        style="
+                          text-align: left;
+                          font: normal normal bold 15px Montserrat;
+                          letter-spacing: 2.8px;
+                          color: #3d5161;
+                          text-transform: uppercase;
+                          opacity: 1;
+                        "
+                      >
+                        {{ station.noActiveDispenser }}/{{
+                          station.noTotalDispenser
+                        }}
+                      </p>
+                      <p
+                        style="
+                          text-align: left;
+                          font: normal normal bold 11px Montserrat;
+                          letter-spacing: 0px;
+                          color: #3d5161;
+                          text-transform: capitalize;
+                          opacity: 1;
+                        "
+                      >
+                        Active Dispenser
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MAP -->
+<!-- <div *ngIf="shift === 1" style=" margin-top: -4rem;">
+  <iframe style="height:84vh;width:100%;" src="http://20.71.116.162/mapview.html" frameborder="0"></iframe>
+</div> -->

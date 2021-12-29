@@ -1,0 +1,79 @@
+.list-chart-container{
+  height: 100%;
+  overflow: auto;
+}
+
+h1{
+  font: normal normal normal  Roboto;
+  font-size: 1.6rem;
+  font-weight: bolder
+}
+h2{
+  font: normal normal bold  Montserrat;
+  font-size: 25px;
+}
+h3{
+  font: normal normal bold 17px/20px Montserrat;
+}
+h4{
+  font: normal normal bold 1em Montserrat;
+}
+
+#clock {
+  font-family: 'Orbitron', sans-serif;
+  color: #000;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+#clock2 {
+  font-family: 'Orbitron', sans-serif;
+  color: #000;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: block;
+}
+
+.section{
+  margin-top: 20px;
+  overflow-y: auto;
+  height: 600px;
+}
+.section::-webkit-scrollbar {
+  width: 16px;
+}
+
+.section::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+.section::-webkit-scrollbar-thumb {
+  background-color: #d4aa70;
+  border-radius: 100px;
+}
+
+/* .mat-tab-label .mat-tab-label-content {
+  font-size: 5px !important;
+  background-color: red;
+} */
+
+.p-3{
+  padding: 0 !important;
+}
+
+.card-body {
+  padding: 0 0 !important;
+}
+
+.section[_ngcontent-mvs-c152]{
+  height: unset !important;
+}
+
+/* .card{
+  height: 11rem;
+} */
+

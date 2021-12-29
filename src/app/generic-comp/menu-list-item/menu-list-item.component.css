@@ -1,0 +1,47 @@
+.menu-list-item{
+    color: white !important;
+    font-size: 12px !important;
+  }
+  .active {
+    color: rgb(196, 213, 253) !important;
+  }
+
+
+  .icon_tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .icon_tooltip .icon_tooltiptext {
+    visibility: hidden;
+    width: 125px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    /* padding: 5px 0; */
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 60%;
+    margin-left: -70px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 10px;
+  }
+  
+  .icon_tooltip .icon_tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .icon_tooltip:hover .icon_tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }

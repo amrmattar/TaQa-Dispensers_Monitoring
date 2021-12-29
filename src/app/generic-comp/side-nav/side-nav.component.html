@@ -1,0 +1,36 @@
+<mat-nav-list
+  style="
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-x: clip;
+    width: 70px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    align-items: center;
+    overflow: clip;
+  "
+  class="nav-list"
+>
+  <div class="row">
+    <img
+      (click)="redirect()"
+      type="button"
+      style="width: 55px"
+      [src]="'../../assets/imgs/PMS.svg'"
+    />
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <app-menu-list-item
+    *ngFor="let item of navItems"
+    [item]="item"
+  ></app-menu-list-item>
+  <div class=""></div>
+  <div style="margin-top: auto;cursor: pointer;" (click)="logout()" class="row">
+    <img style="width: 55px" [src]="'../../assets/imgs/logout.svg'" />
+  </div>
+</mat-nav-list>

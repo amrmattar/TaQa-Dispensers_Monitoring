@@ -1,0 +1,55 @@
+
+      <div class="radar-container">
+        <div class="row justify-content-center">
+               <h2 class="text-center" style="font-size: .9rem; font-weight: 500">
+                 Hourly Sales
+               </h2>
+               <div id="chart" *ngIf="vehicleData != null">
+                 <apx-chart
+                   [series]="hourlyChart.series"
+                   [chart]="hourlyChart.chart"
+                   [xaxis]="hourlyChart.xaxis"
+                   [stroke]="hourlyChart.stroke"
+                   [colors]="hourlyChart.colors"
+                   [dataLabels]="hourlyChart.dataLabels"
+                   [tooltip]="hourlyChart.tooltip"
+                   [plotOptions]="hourlyChart.plotOptions"
+                   [markers]="hourlyChart.markers"
+                   [yaxis]="hourlyChart.yaxis"
+                   [fill]="hourlyChart.fill"
+                   [legend]="hourlyChart.legend"
+                 ></apx-chart>
+               </div>
+             </div>
+             <div class="row justify-content-center">
+               <h2 class="text-center" style="font-size: 1rem; font-weight: 500">
+                 Sales by Station
+               </h2>
+       
+               <div
+                 class="row justify-content-center"
+                 *ngFor="let station of allStations"
+               >
+                 <div class="col-sm-2 mt-2">
+                   <img
+                     style="width: 40px; opacity: 0.5"
+                     src="../../assets/imgs/local_gas_station_black_24dp.svg"
+                   />
+                 </div>
+                 <div class="col-sm-4 mt-4">
+                   <h4 class="text-muted" style="font-size: 0.8rem">
+                     {{ station.name }}
+                   </h4>
+                 </div>
+                 <div class="col-sm-6">
+                   <br />
+                   <h3 *ngIf="station.totalConsumption > 0" class="text-muted">
+                     {{ (station.totalConsumption / 0.744).toFixed() | number: "" }} m
+                     <sup>3</sup>
+                   </h3>
+                   <h1 *ngIf="station.totalConsumption <= 0">Not Monitored</h1>
+                 </div>
+               </div>
+             </div>
+
+      </div>
